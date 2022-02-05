@@ -1,5 +1,9 @@
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
 .nav {
-    background-color: #dbccff;
+    padding: 2%;
+    background-color: v.$light-purple;
     display: flex;
     justify-content: space-around;
 }

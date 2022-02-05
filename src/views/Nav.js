@@ -6,9 +6,9 @@ function Nav() {
     <div className="nav">
       <h1>Kvizo</h1>
       <NavLink to="/" className="home-link">Home</NavLink>
-      <NavLink to="/create" className="create">Create Quiz</NavLink>
+      <NavLink to="/create/*" className="create">Create</NavLink>
       <NavLink to="/quizzes" className="quizzes">Quizzes</NavLink>
-      <NavLink to="/about" className="about">About us</NavLink>
+      <NavLink to="/about" className="about">About</NavLink>
     </div>
   );
 }

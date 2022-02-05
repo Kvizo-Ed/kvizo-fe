@@ -10,7 +10,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={ <Home /> } />
-        <Route path="/create" element={ <CreateMultiForm />} />
+        <Route path="/create/*" element={ <CreateMultiForm />} />
       </Routes>
     </div>
   );

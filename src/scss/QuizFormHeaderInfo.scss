@@ -1,0 +1,9 @@
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
+.create-quiz-header {
+    padding: 2%;
+    background-color: v.$white;
+    display: flex;
+    justify-content: space-around;
+}
