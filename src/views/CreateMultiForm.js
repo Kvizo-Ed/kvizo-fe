@@ -1,31 +1,12 @@
 import '../scss/CreateMultiForm.scss';
+import QuizFormHeaderInfo from '../components/QuizFormHeaderInfo'
 
 function CreateMultiForm() {
 
-    const grades = []
-    for (let i = 1; i < 13; i++) {
-        grades.push(
-            <option value={i}>{i}</option>
-        )
-    }
- 
     return (
         <form className="create-multi-quiz">
-            <label >
-                Subject
-                <input type="text" name="subject" />
-            </label>
-            <label >
-                Topic
-                <input type="text" name="topic" />
-            </label>
-            <label>
-                Grade level
-                <select>
-                    <option value="k" >K</option>
-                    {grades}   
-                </select>
-            </label>
+            <QuizFormHeaderInfo />
+           
             <label >
                 Question
                 <input type="text" name="questionText" />
