@@ -1,4 +1,3 @@
-
 @use 'sass-utils/variables' as v;
 @use 'sass-utils/mixins' as m;
 
@@ -6,4 +5,7 @@
     @include m.view;
     background-color: v.$white;
     font-family: v.$content-font;
+    display: flex;
+    flex-direction: column;;
+    align-items: center;
 }

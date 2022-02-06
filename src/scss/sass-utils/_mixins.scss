@@ -1,4 +1,9 @@
 @mixin view {
-    border: 2px solid green;
     height: 90%;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

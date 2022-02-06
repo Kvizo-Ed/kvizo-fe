@@ -2,6 +2,7 @@
 @use 'sass-utils/mixins' as m;
 
 .create-new-quiz {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

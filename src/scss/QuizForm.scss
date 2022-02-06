@@ -1,0 +1,94 @@
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
+.create-quiz {
+    min-height: 50%;
+    width: 90%;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background: v.$light-purple;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.quiz-form-question {
+    @include m.flex-center;
+    height: 25%;
+    margin: 0 5% 2%;
+}
+
+.quiz-form-question-number {
+    color: v.$dark-purple;
+    font-size: 3em;
+    margin-right: 3%;
+}
+
+.quiz-form-question-label {
+    @include m.flex-center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 15%;
+    height: 100%;
+    background-color: v.$dark-purple;
+    color: v.$white;
+    font-weight: 700;
+}
+
+.quiz-form-question-input {
+    border: none;
+    width: 75%;
+    height: 100%;
+}
+
+.quiz-form-answer-row {
+    margin-bottom: 5px;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-answer {
+    display: flex;
+    width: 50%;
+}
+
+.quiz-form-answer-label {
+    @include m.flex-center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 20%;
+    height: 100%;
+    color: v.$white;
+    font-weight: 700;
+}
+
+.quiz-form-answer-input {
+    border: none;
+    width: 75%;
+    height: 100%;
+}
+
+.correct-label {
+    background-color: v.$green;
+}
+
+.incorrect-label {
+    background-color: v.$primary-red;
+}
+
+.save-question-btn {
+    border: none;
+    background-color: v.$secondary-orange;
+    padding: 1.5%;
+    color: v.$white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.save-question-btn:disabled {
+    background-color: gray;
+    color: v.$black;
+    cursor: default;
+}
