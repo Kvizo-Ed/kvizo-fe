@@ -14,7 +14,7 @@
 .quiz-form-question {
     @include m.flex-center;
     height: 25%;
-    margin: 0 5% 2%;
+    margin: 0 5%;
 }
 
 .quiz-form-question-number {
@@ -91,4 +91,46 @@
     background-color: gray;
     color: v.$black;
     cursor: default;
+}
+
+.info-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: baseline;
+}
+
+.info-btn {
+    @include m.flex-center;
+    border: none;
+    color: v.$secondary-orange;
+    font-size: 1em;
+}
+
+.info-modal {
+    @include m.flex-center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.close-modal {
+    @include m.flex-center;
+    padding: 0%;
+    width: 5vh;
+    height: 5vh;
+    font-size: 2em;
+    border: none;
+    color: v.$secondary-orange;
+}
+
+.info-modal-content {
+    border: 5px solid v.$dark-purple;
+    border-radius: 15px;
+    background-color: v.$light-purple;
+    color: v.$dark-purple;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    width: 50vh;
+    font-size: 2em;
+    text-align: center;
 }
