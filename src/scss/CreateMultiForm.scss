@@ -4,5 +4,6 @@
 
 .create-multi-quiz {
     @include m.view;
-
+    background-color: v.$white;
+    font-family: v.$content-font;
 }

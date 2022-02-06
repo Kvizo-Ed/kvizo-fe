@@ -17,25 +17,26 @@ function QuizFormHeaderInfo({ header, setHeader }) {
     }
  
     return (
-        <form className="create-quiz-header">
+        <form className="create-new-quiz">
+            <div className="create-quiz-header">
+                <label className="quiz-form-header-field">
+                    Subject
+                    <input className="quiz-form-header-input" type="text" name="subject" placeholder="e.g. Math" onChange={(e) => handleChange(e)} />
+                </label>
+                <label className="quiz-form-header-field">
+                    Topic
+                    <input className="quiz-form-header-input" type="text" name="topic" placeholder="e.g. Addition" onChange={(e) => handleChange(e)} />
+                </label>
+                <label  className="quiz-form-header-field">
+                    Grade level
+                    <select className="quiz-form-header-input" name="gradeLevel" onChange={(e) => handleChange(e)} >
+                        {grades}   
+                    </select>
+                </label>
+            </div>
 
-            <label >
-                Subject
-                <input type="text" name="subject" placeholder="e.g. Math" onChange={(e) => handleChange(e)} />
-            </label>
-            <label >
-                Topic
-                <input type="text" name="topic" placeholder="e.g. Addition" onChange={(e) => handleChange(e)} />
-            </label>
-            <label>
-                Grade level
-                <select name="gradeLevel" onChange={(e) => handleChange(e)} >
-                    {grades}   
-                </select>
-            </label>
-            <label >
-                Title
-                <input type="text" name="title" placeholder="e.g. Addition Quiz" onChange={(e) => handleChange(e)} />
+            <label className="quiz-form-title-field">
+                <input className="quiz-form-title-input" type="text" name="title" placeholder="Quiz Title" onChange={(e) => handleChange(e)} />
             </label>
 
         </form>
