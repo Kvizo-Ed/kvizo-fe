@@ -1,0 +1,8 @@
+
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
+.create-multi-quiz {
+    @include m.view;
+
+}
