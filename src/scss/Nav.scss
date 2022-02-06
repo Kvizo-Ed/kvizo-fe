@@ -1,5 +1,62 @@
-.nav {
-    background-color: #dbccff;
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
+// Layout
+.navbar, .navigation, .settings {
+    background-color: v.$light-purple;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    height: 10%;
+}
+
+.navigation {
+    height: 100%;
+    width: 50%;
+}
+
+.settings {
+    width: 15%;
+    font-size: 2em;
     justify-content: space-around;
+    color: v.$dark-purple;
+}
+
+
+.logo, .settings {
+    margin: 5px;
+    height: 90%;
+}
+
+// NavLinks
+.navlink {
+    padding: 2%;
+    color: v.$white;
+    font-family: v.$logo-font;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.active {
+    cursor: default;
+    text-decoration: underline wavy v.$primary-yellow;
+}
+
+.home-link {
+    background-color: v.$green;
+}
+
+.create {
+    background-color: v.$secondary-orange;
+}
+
+.quizzes {
+    background-color: v.$pink;
+}
+
+.about {
+    background-color: v.$dark-purple;
 }

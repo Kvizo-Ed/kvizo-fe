@@ -1,0 +1,68 @@
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
+.create-new-quiz {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-quiz-header {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.quiz-form-header-field {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: v.$light-purple;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    color: v.$dark-purple;
+    font-weight: 700;
+    font-size: .75em;
+    width: 25%;
+}
+
+.quiz-form-header-input {
+    border: none;
+    background-color: v.$light-purple;
+    color: v.$dark-purple;
+    margin-top: 10px;
+    height: 2em;
+    font-weight: 500;
+    font-size: 1.5em;
+    width: 100%;
+}
+
+.quiz-form-title-field {
+    background-color: v.$light-purple;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 5px;
+    width: 90%;
+}
+
+.quiz-form-title-input {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: v.$white;
+    font-weight: 500;
+    font-size: 3em;
+    width: 50%;
+    text-align: center;
+    color: v.$dark-purple;
+}
+
+::placeholder {
+    color: v.$dark-purple;
+    font-family: v.$content-font;
+}
