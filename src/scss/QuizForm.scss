@@ -134,3 +134,15 @@
     font-size: 2em;
     text-align: center;
 }
+
+.incomplete {
+    border: 2px dashed red;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    color: v.$primary-red;
+}
