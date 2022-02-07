@@ -51,9 +51,9 @@ function QuizForm({ content, setContent }) {
     const saveQuestion = (e) => {
 
         let newQuestion = {
-            questionText: question.questionText,
-            correctAnswer: question.correctAnswer,
-            possibleAnswers: [question.correctAnswer, question.possibleAnswerB, question.possibleAnswerC, question.possibleAnswerD]
+            questionText: question.questionText.text,
+            correctAnswer: question.correctAnswer.text,
+            possibleAnswers: [question.correctAnswer.text, question.possibleAnswerB.text, question.possibleAnswerC.text, question.possibleAnswerD.text]
         }
 
         setContent({
