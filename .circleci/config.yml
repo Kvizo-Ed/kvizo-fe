@@ -23,4 +23,4 @@ workflows:
         - build-and-deploy:
             filters:
               branches:
-                only: master # only deploy on the master branch琀
+                only: main
