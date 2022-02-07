@@ -14,7 +14,8 @@ function CreateMultiForm() {
         subject: '',
         topic: '',
         gradeLevel: '0',
-        title: ''
+        title: '',
+        type: 'multi'
     })
 
     const [quizContent, setQuizContent] = useState({
