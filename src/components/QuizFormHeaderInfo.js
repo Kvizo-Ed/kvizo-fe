@@ -1,8 +1,8 @@
 import '../scss/QuizFormHeaderInfo.scss';
 
-function QuizFormHeaderInfo({ header, setHeader }) {
+function QuizFormHeaderInfo({ header, setHeader, saveNewQuiz }) {
 
-    const grades = [<option key="0" value='0'>K</option>]
+    const grades = [<option key="0" value="0">K</option>]
     for (let i = 1; i < 13; i++) {
         grades.push(
             <option key={i} value={i}>{i}</option>
@@ -29,7 +29,7 @@ function QuizFormHeaderInfo({ header, setHeader }) {
                 </label>
                 <label  className="quiz-form-header-field">
                     Grade level
-                    <select className="quiz-form-header-input" name="gradeLevel" onChange={(e) => handleChange(e)} >
+                    <select className="quiz-form-header-input" name="grade" onChange={(e) => handleChange(e)} >
                         {grades}   
                     </select>
                 </label>
@@ -38,6 +38,8 @@ function QuizFormHeaderInfo({ header, setHeader }) {
             <label className="quiz-form-title-field">
                 <input className="quiz-form-title-input" type="text" name="title" placeholder="Quiz Title" onChange={(e) => handleChange(e)} />
             </label>
+
+            <button onClick={(e) => saveNewQuiz(e)}>Save</button>
 
         </form>
     );
