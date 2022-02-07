@@ -1,7 +1,7 @@
 import '../scss/QuizForm.scss';
 import { useState } from 'react'
-import { FaInfoCircle } from 'react-icons/fa'
-import { RiCloseCircleFill } from 'react-icons/ri'
+// import { FaInfoCircle } from 'react-icons/fa'
+// import { RiCloseCircleFill } from 'react-icons/ri'
 import Modal from 'react-modal'
 
 Modal.setAppElement(document.getElementById('root'))
@@ -61,10 +61,10 @@ function QuizForm({ content, setContent }) {
             </div>
 
             <div className="info-btn-container">
-                <button onClick={(e) => toggleInfoModal(e)} className="info-btn"><FaInfoCircle /></button>
+                {/* <button onClick={(e) => toggleInfoModal(e)} className="info-btn"><FaInfoCircle /></button> */}
                 <Modal isOpen={modalIsOpen} className="info-modal">
                     <div className="info-modal-content">
-                        <button onClick={(e) => toggleInfoModal(e)} className="close-modal"><RiCloseCircleFill /></button>
+                        {/* <button onClick={(e) => toggleInfoModal(e)} className="close-modal"><RiCloseCircleFill /></button> */}
                         <h3>Multiple choice answer options will be randomized</h3>
                     </div>
                 </Modal>

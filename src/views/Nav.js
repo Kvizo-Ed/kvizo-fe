@@ -1,7 +1,7 @@
 import '../scss/Nav.scss';
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/kvizo-logo.png'
-import { RiUserFill, RiSettings3Fill } from 'react-icons/ri'
+// import { RiUserFill, RiSettings3Fill } from 'react-icons/ri'
 
 function Nav() {
   return (
@@ -14,8 +14,8 @@ function Nav() {
         <NavLink to="/about" className="navlink about">About</NavLink>
       </div>
       <div className="settings">
-        <p><RiUserFill /></p>
-        <p><RiSettings3Fill /></p>
+        {/* <p><RiUserFill /></p>
+        <p><RiSettings3Fill /></p> */}
       </div>
     </div>
   );
