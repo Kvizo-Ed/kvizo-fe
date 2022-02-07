@@ -12,6 +12,7 @@ workflows:
           # make sure app has been installed and built
           # before running tests across multiple machines
           # this avoids installing same dependencies 10 times
+          install-command: npm i reacticons
           requires:
             - cypress/install
           record: true # record results on Cypress Dashboard
