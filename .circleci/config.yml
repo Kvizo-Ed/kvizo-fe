@@ -1,22 +1,27 @@
+
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1
-  react: thefrontside/react@0.1.0
-  heroku: circleci/heroku@0.0.10
+  node: circleci/node@1.1.6
+jobs:
+  build-and-deploy:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm run build
+            - run: sudo apt-get install rsync && rsync --version
+            - run: rsync -a -e "ssh -o StrictHostKeyChecking=no" dist/ centos@X.XX.XXX.XXX:~/reactfrontend/
+            - run:
+                name: Deploy Final
+                command: |
+                  ssh centos@X.XX.XXX.XXX "sudo rsync -a /home/centos/reactfrontend/ /usr/share/nginx/html/"
 workflows:
-  build:
-    jobs:
-      - cypress/run:
-          start: npm start
-          wait-on: 'http://localhost:3000'
-          filters:
+    build-and-deploy:
+      jobs:
+        - build-and-deploy:
+            filters:
               branches:
-                only:
-                  - main
-      - heroku/deploy-via-git:
-          requires:
-            - cypress/run
-          filters:
-              branches:
-                only:
-                  - main
+                only: main  
