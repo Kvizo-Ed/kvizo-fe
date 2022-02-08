@@ -15,7 +15,7 @@ function CreateMultiForm() {
         subject: '',
         topic: '',
         grade: '0',
-        // title: '',
+        title: '',
         type: 'multi'
     })
 
