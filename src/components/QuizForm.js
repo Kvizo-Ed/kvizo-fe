@@ -9,66 +9,56 @@ Modal.setAppElement(document.getElementById('root'))
 function QuizForm({ content, setContent }) {
 
     const [question, setQuestion] = useState({
-        questionText: {text: '', isComplete: "pending"},
-        correctAnswer: {text: '', isComplete: "pending"},
-        possibleAnswerB: {text: '', isComplete: "pending"},
-        possibleAnswerC: {text: '', isComplete: "pending"},
-        possibleAnswerD: {text: '', isComplete: "pending"}
+        questionText: '',
+        correctAnswer: '',
+        possibleAnswerB: '',
+        possibleAnswerC: '',
+        possibleAnswerD: ''
     })
 
     const [incompleteMessage, setIncompleteMessage] = useState('hide')
 
     const handleChange = (e) => {
-        let complete = e.target.value ? 'complete' : 'pending'
         setQuestion({
             ...question,
-            [e.target.name]: {text: e.target.value, isComplete: complete}
+            [e.target.name]: e.target.value
         })
     }
 
     const handleSave = (e) => {
         e.preventDefault()
-        checkFields() ? saveQuestion() : markIncomplete()
+        checkFields() ? saveQuestion() : setIncompleteMessage('show')
     }
 
     const checkFields = useCallback(() => {
         const fields = Object.keys(question)
-        return fields.every(field => question[field].isComplete === 'complete')
+        return fields.every(field => question[field].length)
     }, [question])
 
-    const markIncomplete = () => {
-        let fields = Object.keys(question)
-        let completeStatus = {}
-        fields.forEach(field => {
-            completeStatus[field] = (question[field].text) ? 
-                {text: question[field].text, isComplete: 'complete'} : 
-                {text: question[field].text, isComplete: 'incomplete'}
+    const resetFields = () => {
+        setQuestion({
+            questionText: '',
+            correctAnswer: '',
+            possibleAnswerB: '',
+            possibleAnswerC: '',
+            possibleAnswerD: ''
         })
-        setQuestion(completeStatus)
-        setIncompleteMessage('show')
+
+        setIncompleteMessage('hide')
     }
 
     const saveQuestion = (e) => {
-
         let newQuestion = {
-            questionText: question.questionText.text,
-            correctAnswer: question.correctAnswer.text,
-            possibleAnswers: [question.correctAnswer.text, question.possibleAnswerB.text, question.possibleAnswerC.text, question.possibleAnswerD.text]
+            questionText: question.questionText,
+            correctAnswer: question.correctAnswer,
+            possibleAnswers: [question.correctAnswer, question.possibleAnswerB, question.possibleAnswerC, question.possibleAnswerD]
         }
 
         setContent({
             questions: [...content.questions, newQuestion]
         })
 
-        setQuestion({
-            questionText: {text: '', isComplete: "pending"},
-            correctAnswer: {text: '', isComplete: "pending"},
-            possibleAnswerB: {text: '', isComplete: "pending"},
-            possibleAnswerC: {text: '', isComplete: "pending"},
-            possibleAnswerD: {text: '', isComplete: "pending"}
-        })
-
-        setIncompleteMessage('hide')
+        resetFields()
     }
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -79,18 +69,15 @@ function QuizForm({ content, setContent }) {
     }
 
     useEffect(() => {
-        if (incompleteMessage === 'show') {
-            let message = checkFields() ? 'hide' : 'show'
-            setIncompleteMessage(message)
-        }
-    }, [checkFields, incompleteMessage])
+        checkFields() && setIncompleteMessage('hide')
+    }, [checkFields])
 
     return (
         <form className="create-quiz">
             <div className="quiz-form-question">
                 <h1 className="quiz-form-question-number">{content.questions.length + 1}.</h1>
                 <label className="quiz-form-question-label">Question</label>
-                <textarea className={`quiz-form-question-input ${question.questionText.isComplete}`} type="text" name="questionText" value={question.questionText.text} onChange={(e) => handleChange(e)} />
+                <textarea className={`quiz-form-question-input ${incompleteMessage}-${question.questionText.length}`} type="text" name="questionText" value={question.questionText} onChange={(e) => handleChange(e)} />
             </div>
 
             <div className="info-btn-container">
@@ -106,24 +93,24 @@ function QuizForm({ content, setContent }) {
             <div className="quiz-form-answer-row">
                 <div className="form-answer">
                     <label className="quiz-form-answer-label correct-label">Correct Answer</label>
-                    <input className={`quiz-form-answer-input ${question.correctAnswer.isComplete}`} type="text" name="correctAnswer" value={question.correctAnswer.text} onChange={(e) => handleChange(e)} />
+                    <input className={`quiz-form-answer-input ${incompleteMessage}-${question.correctAnswer.length}`} type="text" name="correctAnswer" value={question.correctAnswer} onChange={(e) => handleChange(e)} />
                 </div>
                 
                 <div className="form-answer">
                     <label className="quiz-form-answer-label incorrect-label">Incorrect Answer 1</label>
-                    <input className={`quiz-form-answer-input ${question.possibleAnswerB.isComplete}`} type="text" name="possibleAnswerB" value={question.possibleAnswerB.text} onChange={(e) => handleChange(e)} />
+                    <input className={`quiz-form-answer-input ${incompleteMessage}-${question.possibleAnswerB.length}`} type="text" name="possibleAnswerB" value={question.possibleAnswerB} onChange={(e) => handleChange(e)} />
                 </div>
             </div>
 
             <div className="quiz-form-answer-row">
                 <div className="form-answer">    
                     <label className="quiz-form-answer-label incorrect-label">Incorrect Answer 2</label>
-                    <input className={`quiz-form-answer-input ${question.possibleAnswerC.isComplete}`} type="text" name="possibleAnswerC" value={question.possibleAnswerC.text} onChange={(e) => handleChange(e)} />
+                    <input className={`quiz-form-answer-input ${incompleteMessage}-${question.possibleAnswerC.length}`} type="text" name="possibleAnswerC" value={question.possibleAnswerC} onChange={(e) => handleChange(e)} />
                 </div>
 
                 <div className="form-answer">
                     <label className="quiz-form-answer-label incorrect-label">Incorrect Answer 3</label>
-                    <input className={`quiz-form-answer-input ${question.possibleAnswerD.isComplete}`} type="text" name="possibleAnswerD" value={question.possibleAnswerD.text} onChange={(e) => handleChange(e)} />
+                    <input className={`quiz-form-answer-input ${incompleteMessage}-${question.possibleAnswerD.length}`} type="text" name="possibleAnswerD" value={question.possibleAnswerD} onChange={(e) => handleChange(e)} />
                 </div>
             </div>
             
