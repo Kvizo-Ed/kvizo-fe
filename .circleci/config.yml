@@ -46,4 +46,4 @@ workflows:
         - build-and-deploy:
             filters:
               branches:
-                only: main # only deploy on the master branch琀
+                only: circleci-project-setup # only deploy on the master branch琀
