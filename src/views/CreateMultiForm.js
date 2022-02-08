@@ -29,6 +29,7 @@ function CreateMultiForm() {
             ...quizContent
         })
     }
+    console.log(preview)
 
     return (
         <div className="create-multi-quiz">
