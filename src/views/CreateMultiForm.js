@@ -1,6 +1,7 @@
 import '../scss/CreateMultiForm.scss';
 import QuizFormHeaderInfo from '../components/QuizFormHeaderInfo'
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 // When we get to multiple quiz/game types, we might consider separating the forms into their own components and including buttons to navigate to them:
 // import { NavLink } from 'react-router-dom'
@@ -21,15 +22,6 @@ function CreateMultiForm() {
         questions: []
     })
 
-    const [preview, setPreview] = useState({})
-
-    const previewQuiz = () => {
-        setPreview({
-            ...quizHeader,
-            ...quizContent
-        })
-    }
-
     return (
         <div className="create-multi-quiz">
 
@@ -37,7 +29,6 @@ function CreateMultiForm() {
 
             <QuizForm content={quizContent} setContent={setQuizContent}/>
 
-            <button onClick={() => {previewQuiz()}}>Preview</button>
         </div>
     );
 }
