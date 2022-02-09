@@ -1,7 +1,8 @@
 import '../scss/CreateMultiForm.scss';
 import QuizFormHeaderInfo from '../components/QuizFormHeaderInfo'
 import { useState } from 'react'
-import { postNewQuiz } from '../services/fetchAPIs'
+import { postNewQuiz, patchQuizQuestions } from '../services/fetchAPIs'
+import { useNavigate } from 'react-router-dom'
 
 // When we get to multiple quiz/game types, we might consider separating the forms into their own components and including buttons to navigate to them:
 // import { NavLink } from 'react-router-dom'
@@ -32,9 +33,10 @@ function CreateMultiForm() {
         })
     }
 
-    const saveNewQuiz = (e) => {
+    async function saveNewQuiz(e) {
         e.preventDefault()
-        postNewQuiz(quizHeader)
+        await postNewQuiz(quizHeader)
+        console.log(newQuiz)
     }
 
     return (
