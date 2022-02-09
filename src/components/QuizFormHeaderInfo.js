@@ -1,6 +1,6 @@
 import '../scss/QuizFormHeaderInfo.scss';
 
-function QuizFormHeaderInfo({ header, setHeader, saveNewQuiz }) {
+function QuizFormHeaderInfo({ header, setHeader }) {
 
     const grades = [<option key="0" value='0'>K</option>]
     for (let i = 1; i < 13; i++) {
@@ -38,8 +38,6 @@ function QuizFormHeaderInfo({ header, setHeader, saveNewQuiz }) {
             <label className="quiz-form-title-field">
                 <input className="quiz-form-title-input" type="text" name="title" placeholder="Quiz Title" onChange={(e) => handleChange(e)} />
             </label>
-
-            <button onClick={(e) => saveNewQuiz(e)}>Save Multiple Choice Quiz</button>
 
         </form>
     );

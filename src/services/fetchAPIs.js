@@ -8,8 +8,8 @@ export const postNewQuiz = (quizHeaders) => {
       })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data)
-        return data
+        console.log('Success:', data.data.id)
+        return data.data.id
       })
       .catch((error) => {
         console.error('Error:', error)
