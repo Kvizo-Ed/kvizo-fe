@@ -48,7 +48,7 @@ function QuizForm({ content, setContent }) {
         setIncompleteMessage('hide')
     }
 
-    const [previewOpen, setPreviewOpen] = useState(true)
+    const [previewOpen, setPreviewOpen] = useState(false)
 
     const previewQuiz = (e) => {
         e.preventDefault()
