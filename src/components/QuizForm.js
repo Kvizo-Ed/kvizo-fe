@@ -53,10 +53,6 @@ function QuizForm({ content, setContent }) {
     const previewQuiz = (e) => {
         e.preventDefault()
         setPreviewOpen(!previewOpen)
-        // setPreview({
-        //     ...quizHeader,
-        //     ...quizContent
-        // })
     }
 
 
@@ -131,7 +127,7 @@ function QuizForm({ content, setContent }) {
                 </div>
             </div>
             
-            <button onClick={previewQuiz}>Preview</button>
+            <button onClick={(e) => previewQuiz(e)}>Preview</button>
             <button className="save-question-btn" onClick={(e) => handleSave(e)}>Save Question</button>
             <p className={incompleteMessage} >Please complete all fields</p>
             

@@ -1,32 +1,22 @@
 import '../scss/QuizQuestion.scss';
 import { RiCloseCircleFill } from 'react-icons/ri'
+import { shuffle } from '../services/utils.js'
 
 function quizQuestion({question, setPreviewOpen, content}) {
 
-	function shuffle(array) {
-		let currentIndex = array.length, randomIndex
-		while (currentIndex != 0) {
-			randomIndex = Math.floor(Math.random() * currentIndex)
-			currentIndex--
-			[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
-		}
-		return array
-	}
+	let questionAnswers = Object.values(question)
+	questionAnswers.shift()
+	shuffle(questionAnswers)
 
-	let questionArr = Object.values(question)
-	questionArr.shift()
-	shuffle(questionArr)
-	
 
-	let questions = questionArr.map((element, index) => {
-		return <div className='answer' key={index}>
+	let questions = questionAnswers.map((element, index) => {
+		return (
+					<div className='answer' key={index}>
 						<label className='answer-label'>{ String.fromCharCode(index + 1 + 64)}</label>
 						<p>{element}</p>
 					</div>
+		)
 	})
-
-	console.log(questions)
-
 
 	return (
 		<section className="quiz-question-container">
