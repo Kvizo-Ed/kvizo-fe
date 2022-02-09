@@ -2,6 +2,7 @@ import '../scss/QuizForm.scss';
 import { useEffect, useState, useCallback } from 'react'
 import { FaInfoCircle } from 'react-icons/fa'
 import { RiCloseCircleFill } from 'react-icons/ri'
+import QuizQuestion from '../components/QuizQuestion'
 import Modal from 'react-modal'
 
 Modal.setAppElement(document.getElementById('root'))
@@ -47,6 +48,18 @@ function QuizForm({ content, setContent }) {
         setIncompleteMessage('hide')
     }
 
+    const [previewOpen, setPreviewOpen] = useState(true)
+
+    const previewQuiz = (e) => {
+        e.preventDefault()
+        setPreviewOpen(!previewOpen)
+        // setPreview({
+        //     ...quizHeader,
+        //     ...quizContent
+        // })
+    }
+
+
     const saveQuestion = (e) => {
         let newQuestion = {
             questionText: question.questionText,
@@ -79,6 +92,10 @@ function QuizForm({ content, setContent }) {
                 <label className="quiz-form-question-label">Question</label>
                 <textarea className={`quiz-form-question-input ${incompleteMessage}-${question.questionText.length}`} type="text" name="questionText" value={question.questionText} onChange={(e) => handleChange(e)} />
             </div>
+
+            <Modal isOpen={previewOpen} className="info-modal">
+                <QuizQuestion question={question} setPreviewOpen={setPreviewOpen} />
+            </Modal>
 
             <div className="info-btn-container">
                 <button onClick={(e) => toggleInfoModal(e)} className="info-btn"><FaInfoCircle /></button>
@@ -114,6 +131,7 @@ function QuizForm({ content, setContent }) {
                 </div>
             </div>
             
+            <button onClick={previewQuiz}>Preview</button>
             <button className="save-question-btn" onClick={(e) => handleSave(e)}>Save Question</button>
             <p className={incompleteMessage} >Please complete all fields</p>
             

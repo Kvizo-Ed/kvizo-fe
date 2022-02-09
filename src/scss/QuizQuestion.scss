@@ -1,0 +1,91 @@
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
+.quiz-question-container {
+	width: 80%;
+	padding: 50px;
+	background: v.$light-purple;
+	border-radius: 40px;
+	display: flex;
+	flex-direction: column;
+
+	.close-btn {
+    border: none;
+    color: v.$secondary-orange;
+    font-size: 1em;
+		background: none;
+		height: 4vw;
+		width: 4vw;
+		cursor: pointer;
+		transition: ease 0.3s;
+	}
+
+	.close-btn:hover {
+		transform: scale(1.03);
+	}
+
+	.quiz-question {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+
+		.quiz-question-description {
+			font-size: 1.7vw;
+			width: 95%;
+			margin: 0px 0px 40px;
+			border-radius: 15px;
+			background-color: v.$dark-purple;
+			color: white;
+			padding: 30px;
+		}
+
+		.answers-container {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-auto-rows: 1fr;
+			grid-gap: 40px;
+			color: rgb(0, 0, 0);
+			width: 90%;
+			justify-content: center;
+
+			.answer {
+				@include m.flex-center;
+				border-radius: 15px;
+				background-color: v.$dark-purple;
+				color: v.$white;
+				font-weight: 600;
+				overflow: hidden;
+				cursor: pointer;
+				transition: ease 0.3s;
+
+				.answer-label {
+					color: v.$light-purple;
+					height: 100%;
+					width: 20%;
+					padding: 10px;
+					font-size: 3.5vw;
+					background-color: rgba(0, 0, 0, 0.742);
+					overflow: hidden;
+					@include m.flex-center;
+				}
+
+				p {
+					width: 80%;
+					height: 100%;
+					padding: 10px;
+					font-size: 1.1vw;
+				}
+			}
+			.answer:hover {
+				transform: scale(1.03);
+			}
+
+		}
+
+
+	}
+}
