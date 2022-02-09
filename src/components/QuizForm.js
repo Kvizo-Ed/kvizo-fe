@@ -51,7 +51,6 @@ function QuizForm({ content, setContent }) {
     const [previewOpen, setPreviewOpen] = useState(false)
 
     const previewQuiz = (e) => {
-        console.log(e)
         e.preventDefault()
         setPreviewOpen(!previewOpen)
     }
