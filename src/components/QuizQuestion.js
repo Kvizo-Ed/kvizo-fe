@@ -1,7 +1,7 @@
 import '../scss/QuizQuestion.scss';
 import { RiCloseCircleFill } from 'react-icons/ri'
 
-function quizQuestion({question, setPreviewOpen}) {
+function quizQuestion({question, setPreviewOpen, content}) {
 
 	function shuffle(array) {
 		let currentIndex = array.length, randomIndex
@@ -31,6 +31,7 @@ function quizQuestion({question, setPreviewOpen}) {
 	return (
 		<section className="quiz-question-container">
 			<button onClick={(e) => setPreviewOpen(false)} className="close-btn" ><RiCloseCircleFill size='4vw'/></button>
+			<h1 className='question-header'>Question {content.questions.length + 1}</h1>
 			<div className='quiz-question' >
 				<div className='quiz-question-description'>
 					<p>{question.questionText}</p>
