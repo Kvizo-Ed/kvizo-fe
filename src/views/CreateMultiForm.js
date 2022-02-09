@@ -3,6 +3,7 @@ import QuizFormHeaderInfo from '../components/QuizFormHeaderInfo'
 import { useState } from 'react'
 import { postNewQuiz, patchQuizQuestions } from '../services/fetchAPIs'
 import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 // When we get to multiple quiz/game types, we might consider separating the forms into their own components and including buttons to navigate to them:
 // import { NavLink } from 'react-router-dom'
@@ -46,7 +47,6 @@ function CreateMultiForm() {
 
             <QuizForm content={quizContent} setContent={setQuizContent}/>
 
-            <button onClick={() => {previewQuiz()}}>Preview</button>
         </div>
     );
 }
