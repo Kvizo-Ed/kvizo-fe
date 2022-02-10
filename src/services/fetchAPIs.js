@@ -34,14 +34,15 @@ export const patchQuizQuestions = (quizQuestions, quizId) => {
         })
 }
 
-// export const getQuizzes = () => {
-//   fetch("https://kvizo-be.herokuapp.com//api/v1/quizzes")
-//     .then(response => response.json())
-//     .then(data => {
-//       console.log('Success:', data)
-//     })
-//     .catch((error) => {
-//       console.error('Error:', error)
-//     })
-// }
+export const getQuizzes = () => {
+  return fetch("https://kvizo-be.herokuapp.com//api/v1/quizzes")
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data)
+      return data.data
+    })
+    .catch((error) => {
+      console.error('Error:', error)
+    })
+}
 
