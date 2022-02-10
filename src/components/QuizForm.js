@@ -55,10 +55,10 @@ function QuizForm({ content, setContent }) {
         setPreviewOpen(!previewOpen)
     }
 
-
     const saveQuestion = (e) => {
         let newQuestion = {
             questionText: question.questionText,
+            questionType: "multi",
             correctAnswer: question.correctAnswer,
             possibleAnswers: [question.correctAnswer, question.possibleAnswerB, question.possibleAnswerC, question.possibleAnswerD]
         }
