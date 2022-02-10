@@ -106,7 +106,7 @@
     font-size: 1em;
 }
 
-.info-modal {
+.modal {
     @include m.flex-center;
     height: 100vh;
     width: 100vw;
@@ -122,7 +122,7 @@
     color: v.$secondary-orange;
 }
 
-.info-modal-content {
+.modal-content {
     border: 5px solid v.$dark-purple;
     border-radius: 15px;
     background-color: v.$light-purple;
