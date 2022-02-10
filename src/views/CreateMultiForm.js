@@ -1,13 +1,15 @@
 import '../scss/CreateMultiForm.scss';
+import multipleChoice from '../assets/multiple-choice.png';
+import bingo from '../assets/bingo.png';
 import QuizFormHeaderInfo from '../components/QuizFormHeaderInfo'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { postNewQuiz, patchQuizQuestions } from '../services/fetchAPIs'
 import { useNavigate, Routes, Route } from 'react-router-dom'
-
-// When we get to multiple quiz/game types, we might consider separating the forms into their own components and including buttons to navigate to them:
-// import { NavLink } from 'react-router-dom'
 import QuizForm from '../components/QuizForm'
-// import BingoForm from './BingoForm'
+import BingoForm from '../components/BingoForm'
+import { useLocation } from 'react-router-dom'
+import { getQuizId } from '../services/utils.js'
+
 
 function CreateMultiForm() {
     
@@ -24,48 +26,47 @@ function CreateMultiForm() {
         questions: []
     })
 
+    const [headerDisabled, setHeaderDisabled] = useState('')
+
+    const location = useLocation()
     const navigate = useNavigate()
 
-    async function createNewQuiz(e) {
+    async function createNewQuiz(e, type) {
         e.preventDefault()
-        navigate("multi")
-        let newQuizId = await postNewQuiz(quizHeader)
-        console.log('>>>>', newQuizId)
+        setHeaderDisabled('disabled')
+        let id = await postNewQuiz(quizHeader)
+        navigate(`${type}/${id}`)
     }
+
+    useEffect(() => {
+        let id = getQuizId(location.pathname)
+        console.log(">>Content about to Patch", quizContent)
+        patchQuizQuestions({questions: [quizContent.questions[quizContent.questions.length - 1]]}, id)
+    }, [quizContent, location.pathname])
 
     return (
         <div className="create-multi-quiz">
 
-            <QuizFormHeaderInfo header={quizHeader} setHeader={setQuizHeader} />
+            <QuizFormHeaderInfo header={quizHeader} setHeader={setQuizHeader} disabled={headerDisabled}/>
 
             <Routes>
-                <Route path="/*" element={<button onClick={createNewQuiz}>Create multi/TF quiz</button>}/>
-                <Route path="/multi" element={<QuizForm content={quizContent} setContent={setQuizContent}/>} />
+                <Route path="/*" element=
+                    {<div>
+                        <button onClick={(e, type) => createNewQuiz(e, "multi")}>
+                            Create! 
+                            <img src={multipleChoice} alt="multiple-choice quiz" />
+                        </button>
+                        <button onClick={(e, type) => createNewQuiz(e, "bingo")}>
+                            Create! 
+                            <img src={bingo} alt="multiple-choice quiz" />
+                        </button>
+                    </div>} />
+                <Route path="/multi/:id" element={<QuizForm content={quizContent} setContent={setQuizContent} />} />
+                <Route path="/bingo" element={<BingoForm />} />
             </Routes>
             
-
         </div>
     );
 }
 
 export default CreateMultiForm;
-
-/* ROUTES
-Header - always shows = url: /create/*
--- only editable until they hit the Create button
-
-Create buttons - url: create/*
--- disappear when they select one
--- changes url to whatever they select
-
-QuizForm = /create/multi
--- replaces Create buttons
-*/
-
-/* FETCH ORDER OF EVENTS
-Create button click - 
--- POST new quiz
--- -- retrieve quiz id from response
--- update url to /create/:type/:id
--- new route updates content
-*/
