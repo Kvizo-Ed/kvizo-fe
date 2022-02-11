@@ -15,6 +15,7 @@ function QuizList(quizzes) {
                     topic={quiz.attributes.topic}
                     grade={quiz.attributes.grade}
                     title={quiz.attributes.title}
+                    id={quiz.id}
                 />})
 
             setQuizTitles(quizList)
@@ -23,7 +24,6 @@ function QuizList(quizzes) {
 
 	return (
 		<div className="quiz-list">
-            {console.log('render')}
             {quizTitles}
 		</div>
 	);
