@@ -2,7 +2,7 @@ import '../scss/QuizForm.scss';
 import { useEffect, useState, useCallback } from 'react'
 import { FaInfoCircle } from 'react-icons/fa'
 import { RiCloseCircleFill } from 'react-icons/ri'
-import QuizQuestion from '../components/QuizQuestion'
+import QuizPreviewQuestion from './QuizPreviewQuestion'
 import Modal from 'react-modal'
 
 Modal.setAppElement(document.getElementById('root'))
@@ -90,7 +90,7 @@ function QuizForm({ content, setContent }) {
             </div>
 
             <Modal isOpen={previewOpen} className="modal">
-                <QuizQuestion question={question} setPreviewOpen={setPreviewOpen} content={content} />
+                <QuizPreviewQuestion question={question} setPreviewOpen={setPreviewOpen} content={content} />
             </Modal>
 
             <div className="info-btn-container">

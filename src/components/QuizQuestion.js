@@ -1,15 +1,16 @@
-import '../scss/QuizQuestion.scss';
-import { RiCloseCircleFill } from 'react-icons/ri'
+import '../scss/QuizQuestion.scss'
 import { shuffle } from '../services/utils.js'
+import { useParams, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-function quizQuestion({question, setPreviewOpen, content}) {
+function QuizQuestion({ quiz }) {
 
-	let questionAnswers = Object.values(question)
-	questionAnswers.shift()
-	shuffle(questionAnswers)
+	let { id } = useParams()
+	let parsedId = parseInt(id)
+	let navigate = useNavigate()
+	let quizQuestion = quiz.attributes.questions[parsedId - 1]
 
-
-	let questions = questionAnswers.map((element, index) => {
+	let answers = quizQuestion.possibleAnswers.map((element, index) => {
 		return (
 					<div className='answer' key={index}>
 						<label className='answer-label'>{ String.fromCharCode(index + 1 + 64)}</label>
@@ -20,18 +21,18 @@ function quizQuestion({question, setPreviewOpen, content}) {
 
 	return (
 		<section className="quiz-question-container">
-			<button onClick={(e) => setPreviewOpen(false)} className="close-btn" ><RiCloseCircleFill size='4vw'/></button>
-			<h1 className='question-header'>Question {content.questions.length + 1}</h1>
-			<div className='quiz-question' >
+			<button disabled={parsedId - 1 == 0} onClick={() => {navigate(`/quiz/${quiz.id}/question/${parsedId - 1}`)}}>Prev</button>
+			<div className='quiz-question' key={id}>
 				<div className='quiz-question-description'>
-					<p>{question.questionText}</p>
+					<p>{quizQuestion.questionText}</p>
 				</div>
-					<div className='answers-container'>
-						{questions}
-					</div>
+				<div className='answers-container'>
+					{answers}
+				</div>
 			</div>
+			<button disabled={parsedId + 1 > quiz.attributes.questions.length} onClick={() => {navigate(`/quiz/${quiz.id}/question/${parsedId + 1}`)}}>Next</button>
 		</section>
 	);
 }
 
-export default quizQuestion;
+export default QuizQuestion;
