@@ -10,8 +10,6 @@ import { useState } from 'react'
 import LiveQuizAdmin from './components/LiveQuizAdmin'
 import LiveQuizQuestion from './components/LiveQuizQuestion'
 
-import ConversationsList from './ConversationsList';
-
 function App() {
 
   const [currentQuiz, setCurrentQuiz] = useState({})

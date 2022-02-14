@@ -33,7 +33,7 @@ function QuizQuestion({ quiz }) {
 			<div className='quiz-question'>
 				<div className='quiz-question-description'>
                     <ActionCable
-                        channel={{ channel: 'ConversationsChannel' }}
+                        channel={{ channel: 'LiveQuestionsChannel' }}
                         onReceived={handleReceived}
                     />
 					<p>{question.length ? question.questionText : 'Hang tight, the question is on its way!'}</p>
