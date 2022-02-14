@@ -32,7 +32,10 @@ function Quiz({ setCurrentQuiz }) {
                     <Link to={`question/1`}>
                         <button>Take Quiz</button>
                     </Link>
-                    <Link to={'admin'}>
+                    <Link to={`live/question/`}>
+                        <button>Take Live Quiz</button>
+                    </Link>
+                    <Link to={'live/admin'}>
                         <button>Administer Live Quiz</button>
                     </Link>
                     <Outlet />

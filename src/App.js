@@ -8,6 +8,9 @@ import CreateMultiForm from './views/CreateMultiForm'
 import QuizQuestion from './components/QuizQuestion'
 import { useState } from 'react'
 import LiveQuizAdmin from './components/LiveQuizAdmin'
+import LiveQuizQuestion from './components/LiveQuizQuestion'
+
+import ConversationsList from './ConversationsList';
 
 function App() {
 
@@ -22,7 +25,8 @@ function App() {
         <Route path="/quizzes" element={<Quizzes />} />
         <Route path="/quiz/:id" element={<Quiz setCurrentQuiz={setCurrentQuiz} />}>
           <Route path="question/:id" element={<QuizQuestion quiz={currentQuiz}/>} />
-          <Route path="admin" element={<LiveQuizAdmin quiz={currentQuiz} />} />
+          <Route path="live/admin" element={<LiveQuizAdmin quiz={currentQuiz} />} />
+          <Route path="live/question" element={<LiveQuizQuestion quiz={currentQuiz} />} />
         </Route>
       </Routes>
     </div>
