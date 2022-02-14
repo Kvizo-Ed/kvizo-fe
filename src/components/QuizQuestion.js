@@ -1,23 +1,34 @@
 import '../scss/QuizQuestion.scss'
 import { shuffle } from '../services/utils.js'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 function QuizQuestion({ quiz }) {
+
+	const [studentAnswers, setStudentAnswers] = useState({});
 
 	let { id } = useParams()
 	let parsedId = parseInt(id)
 	let navigate = useNavigate()
 	let quizQuestion = quiz.attributes.questions[parsedId - 1]
+	console.log(quizQuestion)
 
 	let answers = quizQuestion.possibleAnswers.map((element, index) => {
 		return (
-					<div className='answer' key={index}>
+					<div className='answer' key={element} onClick={() => {submitAnswer({element})}}>
 						<label className='answer-label'>{ String.fromCharCode(index + 1 + 64)}</label>
 						<p>{element}</p>
 					</div>
 		)
 	})
+
+	// function submitAnswer(element) {
+	// 	if(!studentAnswers[parsedId]) {
+	// 		setStudentAnswers(...studentAnswers, [studentAnswers[parsedId]]: element)
+	// 	} else {
+	// 	}
+	// 	console.log(studentAnswers)
+	// }
 
 	return (
 		<section className="quiz-question-container">
