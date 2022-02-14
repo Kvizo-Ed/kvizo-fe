@@ -1,26 +1,31 @@
 import '../scss/Quiz.scss';
 import { useState, useEffect } from 'react'
 import { getQuiz } from '../services/fetchAPIs'
-import { useLocation, Outlet, Link } from 'react-router-dom'
-import QuizQuestion from '../components/QuizPreviewQuestion';
+import { useLocation, Outlet, Link, useNavigate } from 'react-router-dom'
 
-function Quiz({ setCurrentQuiz }) {
+function Quiz({ setCurrentQuiz, setStatus }) {
     
     const [quiz, setQuiz] = useState({})
     const [loading, setLoading] = useState(false)
 
     let quizId = parseInt(useLocation().pathname.split('/')[2]);
+    let navigate = useNavigate()
 
     async function fetchQuiz() {
         let data = await getQuiz(quizId);
         await setQuiz(data);
         await setCurrentQuiz(data)
         setLoading(true)
+        setStatus(data)
     }
 
     useEffect(() => {
         fetchQuiz(quizId)
     }, [])
+
+    function submitQuiz() {
+        navigate(`score`)
+    }
 
     return (
         <div className="quiz-container">
@@ -35,6 +40,7 @@ function Quiz({ setCurrentQuiz }) {
                     <Outlet />
                 </div>
             : <h1>hello</h1>}
+            <button onClick={submitQuiz}>Submit Quiz</button>
         </div>
     );
 }
