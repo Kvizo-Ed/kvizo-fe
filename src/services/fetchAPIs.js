@@ -6,18 +6,23 @@ export const postNewQuiz = (quizHeaders) => {
         },
         body: JSON.stringify(quizHeaders),
       })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data.data.id)
-          return data.data.id
-        })
-        .catch((error) => {
-          console.error('Error:', error)
-          return error
-        })
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error(response.status)
+        }
+      })
+      .then(data => {
+        return data.data.id
+      })
+      .catch((error) => {
+        return error
+      })
 }
 
 export const patchQuizQuestions = (quizQuestions, quizId) => {
+    // return fetch(`https://kvizo-be.herokuapp.com//api/v2/quizzes/${quizId}`, {
     return fetch(`https://kvizo-be.herokuapp.com//api/v1/quizzes/${quizId}`, {
         method: 'PATCH',
         headers: {
@@ -25,12 +30,18 @@ export const patchQuizQuestions = (quizQuestions, quizId) => {
         },
         body: JSON.stringify(quizQuestions),
       })
-        .then(response => response.json())
+        .then(response => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            throw new Error(response.status)
+          }
+        })
         .then(data => {
-          console.log('Success:', data)
+          return data
         })
         .catch((error) => {
-          console.error('Error:', error)
+          return error
         })
 }
 
@@ -38,11 +49,11 @@ export const getQuizzes = () => {
   return fetch("https://kvizo-be.herokuapp.com//api/v1/quizzes")
     .then(response => response.json())
     .then(data => {
-      console.log('Success:', data)
+      // console.log('Success:', data)
       return data.data
     })
     .catch((error) => {
-      console.error('Error:', error)
+      // console.error('Error:', error)
     })
 }
 
@@ -50,11 +61,11 @@ export const getQuiz = (id) => {
   return fetch(`https://kvizo-be.herokuapp.com//api/v1/quizzes/${id}`)
     .then(response => response.json())
     .then(data => {
-      console.log('Success:', data)
+      // console.log('Success:', data)
       return data.data
     })
     .catch((error) => {
-      console.error('Error:', error)
+      // console.error('Error:', error)
     })
 }
 
