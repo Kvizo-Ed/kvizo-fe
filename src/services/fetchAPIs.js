@@ -47,13 +47,18 @@ export const patchQuizQuestions = (quizQuestions, quizId) => {
 
 export const getQuizzes = () => {
   return fetch("https://kvizo-be.herokuapp.com//api/v1/quizzes")
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw new Error(response.status)
+      }
+    })
     .then(data => {
-      // console.log('Success:', data)
       return data.data
     })
     .catch((error) => {
-      // console.error('Error:', error)
+      return error
     })
 }
 
