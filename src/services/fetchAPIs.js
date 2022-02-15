@@ -1,4 +1,4 @@
-import { API_ROOT } from '../constants/index.js'
+import { API_WS_ROOT, API_ROOT, HEADERS } from '../constants/index.js'
 
 export const postNewQuiz = (quizHeaders) => {
     return fetch("https://kvizo-be.herokuapp.com//api/v1/quizzes", {
@@ -61,16 +61,14 @@ export const getQuiz = (id) => {
 }
 
 export const postLiveQuestion = (question) => {
-  return fetch(`${API_ROOT}/conversations`, {
+  return fetch(`${API_ROOT}/api/v1/quizzes`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: HEADERS,
       body: JSON.stringify(question),
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data)
+        console.log('RESPONSE:', data)
         return data
       })
       .catch((error) => {

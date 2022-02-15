@@ -1,3 +1,4 @@
+import { ActionCableConsumer } from 'react-actioncable-provider';
 import '../scss/LiveQuizAdmin.scss';
 import { postLiveQuestion } from '../services/fetchAPIs.js'
 
@@ -24,10 +25,22 @@ function LiveQuizAdmin({ quiz }) {
             )
     })
 
+    const handleReceived = (message) => {
+        console.log(message)
+    }
+
     return (
-        <form className="admin">
-            {questions}
-        </form>
+        <ActionCableConsumer 
+            channel="ConversationsChannel"
+            onConnected={() => console.log("connected")}
+            onDisconnected={() => console.log("DISconnected")}
+            onRejected={() => console.log("rejected")}
+            onReceived={handleReceived}
+        >
+            <form className="admin">
+                {questions}
+            </form>
+        </ActionCableConsumer>
     );
 }
 
