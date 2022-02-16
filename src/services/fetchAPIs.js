@@ -61,10 +61,11 @@ export const getQuiz = (id) => {
 }
 
 export const postLiveQuestion = (question) => {
-  return fetch(`${API_ROOT}/conversations`, {
+  return fetch(`${API_ROOT}/api/v1/questions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify(question),
     })

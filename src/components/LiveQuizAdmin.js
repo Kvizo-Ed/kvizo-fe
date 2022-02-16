@@ -9,7 +9,7 @@ function LiveQuizAdmin({ quiz }) {
         e.preventDefault()
         console.log(question)
 
-        postLiveQuestion(question)
+        postLiveQuestion({questionID: 1})
     }
 
     const questions = quiz.attributes.questions.map((question, i) => {
