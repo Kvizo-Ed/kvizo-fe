@@ -80,14 +80,14 @@ function CreateMultiForm() {
                                 Create! 
                                 <img src={bingo} alt="multiple-choice quiz" />
                             </button>
-                            {error && <ErrorMessage />}
+                            {error && <ErrorMessage message="" />}
                         </div>
                     } />
                 <Route path="/multi/:id" element=
                     {
                         <>
                             <QuizForm content={quizContent} setContent={setQuizContent} />
-                            {error && <ErrorMessage />}
+                            {error && <ErrorMessage message="" />}
                         </>
                     } />
                 <Route path="/bingo" element={<BingoForm />} />

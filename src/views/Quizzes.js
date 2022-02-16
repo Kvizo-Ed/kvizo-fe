@@ -24,7 +24,7 @@ function Quizzes() {
 
     return (
         <div className="quiz-list">
-            {error ? <ErrorMessage /> : <QuizList quizzes={allQuizzes}/>}
+            {error ? <ErrorMessage message="" /> : <QuizList quizzes={allQuizzes}/>}
         </div>
     )
 }

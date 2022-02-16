@@ -35,7 +35,7 @@ function Quiz({ setCurrentQuiz, setStatus }) {
 
     return (
         <>
-            {error ? <ErrorMessage /> :
+            {error ? <ErrorMessage message="" /> :
                 <div className="quiz-container">
                     {loading ?
                         <div>
