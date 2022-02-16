@@ -8,7 +8,15 @@ function Quizzes() {
 
     async function getAllQuizzes() {
         let quizzes = await getQuizzes()
-        setAllQuizzes(quizzes)
+        setAllQuizzes(filteredQuizzes(quizzes))
+    }
+
+    function filteredQuizzes(quiz) {
+        return quiz.filter(element => {
+            if(element.attributes.questions.length > 0) {
+                return element
+            }
+        })
     }
 
     useEffect(() => {
@@ -16,7 +24,7 @@ function Quizzes() {
     }, [])
 
     return (
-        <div className="quiz-list">
+        <div className="quizzes">
             <QuizList quizzes={allQuizzes}/>
         </div>
     )

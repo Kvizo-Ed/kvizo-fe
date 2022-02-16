@@ -17,28 +17,24 @@ function QuizFormHeaderInfo({ header, setHeader, disabled }) {
     }
  
     return (
-        <form className="create-new-quiz">
-            <div className="create-quiz-header">
-                <label className="quiz-form-header-field">
-                    Subject
-                    <input disabled={disabled} className="quiz-form-header-input" type="text" name="subject" placeholder="e.g. Math" onChange={(e) => handleChange(e)} />
-                </label>
-                <label className="quiz-form-header-field">
-                    Topic
-                    <input disabled={disabled}  className="quiz-form-header-input" type="text" name="topic" placeholder="e.g. Addition" onChange={(e) => handleChange(e)} />
-                </label>
-                <label  className="quiz-form-header-field">
-                    Grade level
-                    <select disabled={disabled} className="quiz-form-header-input" name="grade" onChange={(e) => handleChange(e)} >
-                        {grades}   
-                    </select>
-                </label>
-            </div>
-
+        <form className={disabled ? "hidden" : "create-new-quiz"}>
             <label className="quiz-form-title-field">
                 <input disabled={disabled} className="quiz-form-title-input" type="text" name="title" placeholder="Quiz Title" onChange={(e) => handleChange(e)} />
             </label>
-
+            <div className="create-quiz-header">
+                <label className="quiz-form-header-field">
+                Subject
+                    <input disabled={disabled} className="quiz-form-header-input" type="text" name="subject" placeholder="e.g. Math" onChange={(e) => handleChange(e)} />
+                </label>
+                <label className="quiz-form-header-field">
+                Topic
+                    <input disabled={disabled}  className="quiz-form-header-input" type="text" name="topic" placeholder="e.g. Addition" onChange={(e) => handleChange(e)} />
+                </label>
+                <label  className="quiz-form-header-field">
+                Grade level
+                    <select disabled={disabled} className="quiz-form-header-input" name="grade" onChange={(e) => handleChange(e)} >{grades}</select>
+                </label>
+            </div>
         </form>
     );
 }
