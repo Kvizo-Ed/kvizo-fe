@@ -22,7 +22,6 @@ export const postNewQuiz = (quizHeaders) => {
 }
 
 export const patchQuizQuestions = (quizQuestions, quizId) => {
-    // return fetch(`https://kvizo-be.herokuapp.com//api/v2/quizzes/${quizId}`, {
     return fetch(`https://kvizo-be.herokuapp.com//api/v1/quizzes/${quizId}`, {
         method: 'PATCH',
         headers: {
@@ -46,7 +45,8 @@ export const patchQuizQuestions = (quizQuestions, quizId) => {
 }
 
 export const getQuizzes = () => {
-  return fetch("https://kvizo-be.herokuapp.com//api/v1/quizzes")
+  return fetch("https://kvizo-be.herokuapp.com//api/v2/quizzes")
+  // return fetch("https://kvizo-be.herokuapp.com//api/v1/quizzes")
     .then(response => {
       if (response.ok) {
         return response.json()
