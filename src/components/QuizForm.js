@@ -2,7 +2,7 @@ import '../scss/QuizForm.scss';
 import { useEffect, useState, useCallback } from 'react'
 import { FaInfoCircle } from 'react-icons/fa'
 import { RiCloseCircleFill } from 'react-icons/ri'
-import QuizQuestion from '../components/QuizQuestion'
+import QuizPreviewQuestion from './QuizPreviewQuestion'
 import Modal from 'react-modal'
 
 Modal.setAppElement(document.getElementById('root'))
@@ -55,10 +55,10 @@ function QuizForm({ content, setContent }) {
         setPreviewOpen(!previewOpen)
     }
 
-
     const saveQuestion = (e) => {
         let newQuestion = {
             questionText: question.questionText,
+            questionType: "multi",
             correctAnswer: question.correctAnswer,
             possibleAnswers: [question.correctAnswer, question.possibleAnswerB, question.possibleAnswerC, question.possibleAnswerD]
         }
@@ -89,14 +89,14 @@ function QuizForm({ content, setContent }) {
                 <textarea className={`quiz-form-question-input ${incompleteMessage}-${question.questionText.length}`} type="text" name="questionText" value={question.questionText} onChange={(e) => handleChange(e)} />
             </div>
 
-            <Modal isOpen={previewOpen} className="info-modal">
-                <QuizQuestion question={question} setPreviewOpen={setPreviewOpen} />
+            <Modal isOpen={previewOpen} className="modal">
+                <QuizPreviewQuestion question={question} setPreviewOpen={setPreviewOpen} content={content} />
             </Modal>
 
             <div className="info-btn-container">
                 <button onClick={(e) => toggleInfoModal(e)} className="info-btn"><FaInfoCircle /></button>
-                <Modal isOpen={modalIsOpen} className="info-modal">
-                    <div className="info-modal-content">
+                <Modal isOpen={modalIsOpen} className="modal">
+                    <div className="modal-content">
                         <button onClick={(e) => toggleInfoModal(e)} className="close-modal"><RiCloseCircleFill /></button>
                         <h3>Multiple choice answer options will be randomized</h3>
                     </div>

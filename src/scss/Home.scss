@@ -7,17 +7,66 @@
 	align-items: center;
 	margin-top: 50px;
 	height: 80%;
-	border: 2px solid red;
+
+	.home-greeting-container {
+		width: 70%;
+		margin: 10px 0px 60px;
+
+		.home-greeting {
+			font-family: Frank Ruhl Libre;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 3vw;
+			line-height: 65px;
+			display: flex;
+			align-items: center;
+			color: v.$dark-purple;
+		}
+	}
 
 		.build-quiz-container {
 			background-color: v.$dark-purple;
-			height: 400px;
-			flex-direction: column;
+			display: flex;
+			flex-direction: row;
 			align-items: center;
 			justify-content: center;
+			border-radius: 80px;
+			overflow: hidden;
+			width: 70%;
 
-			.button {
-				height: 100px;
+			.button-title {
+				@include m.flex-center;
+				height: 100%;
+				width: 25%;
+				color: white;
+				background-color: v.$darker-purple;
+				font-family: Frank Ruhl Libre;
+				font-style: normal;
+				font-weight: bold;
+				font-size: 4vw;
+				line-height: 90px;
+				white-space: pre;
+				padding: 40px;
+			}
+
+			.img-container {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				padding: 15px;
+				width: 75%;
+
+				.icon {
+					margin: 10px 20px 10px;
+					cursor: pointer;
+					transition: ease 0.3s;
+				}
+
+			.icon:hover {
+				transform: scale(1.07);
+			}
 			}
 		}
 }

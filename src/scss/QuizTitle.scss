@@ -1,0 +1,21 @@
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
+.quiz-title {
+    margin: 10px;
+    display: flex;
+    justify-content: baseline;
+}
+
+.title, .details {
+    color: v.$dark-purple;
+    padding: 1%;
+}
+
+.title {
+    background-color: v.$secondary-orange;
+    color: white;
+    border-radius: 15px;
+    margin-right: 10px;
+    font-weight: 600;
+}

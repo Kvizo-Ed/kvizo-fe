@@ -1,0 +1,15 @@
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
+.quiz-container {
+	@include m.flex-center;
+	width: 100%;
+
+	.quiz-view-title {
+		font-size: 50px;
+	}
+
+	.quiz-view-info {
+		font-size: 20px;
+	}
+}

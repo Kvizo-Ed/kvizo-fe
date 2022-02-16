@@ -1,15 +1,13 @@
 @use 'sass-utils/variables' as v;
 @use 'sass-utils/mixins' as m;
 
-.quiz-question-container {
+.quiz-preview-container {
+	width: 80%;
 	padding: 50px;
 	background: v.$background-purple;
 	border-radius: 40px;
 	display: flex;
-	flex-direction: row;
-	border: 1px solid black;
-	width: 90vw;
-	height: 100%;
+	flex-direction: column;
 
 	.close-btn {
     border: none;
@@ -91,6 +89,9 @@
 			.answer:hover {
 				transform: scale(1.03);
 			}
+
 		}
+
+
 	}
 }
