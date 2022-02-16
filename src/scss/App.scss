@@ -2,6 +2,56 @@
 
 .App {
   text-align: center;
-  background-color: v.$background-purple;
-  height: 100vh;
+  background: rgb(187,159,255);
+	background: linear-gradient(180deg, rgba(187,159,255,1) 0%, rgba(219,204,255,1) 100%);
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+}
+
+a {
+	color: #0060B6;
+	text-decoration: none;
+}
+
+.btn {
+	align-items: center;
+	background-image: radial-gradient(100% 100% at 100% 0, v.$dark-purple 0, #5b15ff 100%);
+	border: 0;
+	border-radius: 6px;
+	box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: inline-flex;
+	height: 48px;
+	justify-content: center;
+	line-height: 1;
+	list-style: none;
+	overflow: hidden;
+	padding-left: 16px;
+	padding-right: 16px;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	transition: box-shadow 0.3s,transform 0.3s;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	white-space: nowrap;
+	will-change: box-shadow,transform;
+	font-size: 18px;
+	margin: 10px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+}
+
+.btn:active {
+	transform: scale(1.05);
 }

@@ -2,14 +2,41 @@
 @use 'sass-utils/mixins' as m;
 
 .quiz-question-container {
-	padding: 50px;
-	background: v.$background-purple;
+	padding: 0px 50px 50px;
+	background-color: #6b2cff;
+	box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
 	border-radius: 40px;
 	display: flex;
+	align-items: center;
 	flex-direction: row;
-	border: 1px solid black;
 	width: 90vw;
-	height: 100%;
+	height: 500px;
+
+	.question-id-header {
+		color: white;
+		font-size: 35px;
+		margin: 20px 0px 17px;
+		background-color: #3000a0;
+		padding: 15px 40px 15px;
+		border-radius: 20px;
+	}
+
+	.btn {
+		background-image: none;
+		background-color: #3000a0;
+		font-size: 35px;
+		border: 2px solid rgba(255, 255, 255, 0);
+	}
+
+	.next.btn:hover {
+		border: 2px solid white;
+		transform: translate(10px);
+	}
+
+	.prev.btn:hover {
+		border: 2px solid white;
+		transform: translate(-10px);
+	}
 
 	.close-btn {
     border: none;
@@ -42,12 +69,13 @@
 
 
 		.quiz-question-description {
-			font-size: 1.7vw;
-			width: 95%;
+			width: 90%;
+			height: auto;
+      word-wrap: break-word;
 			margin: 0px 0px 40px;
 			border-radius: 15px;
-			background-color: v.$dark-purple;
-			color: white;
+			background-color: v.$light-purple;
+			color: v.$dark-purple;
 			padding: 30px;
 		}
 
@@ -59,24 +87,27 @@
 			color: rgb(0, 0, 0);
 			width: 90%;
 			justify-content: center;
+			align-items: center;
 
 			.answer {
 				@include m.flex-center;
 				border-radius: 15px;
-				background-color: v.$dark-purple;
-				color: v.$white;
-				font-weight: 600;
+				color: v.$dark-purple;
+				background-color: v.$light-purple;
 				overflow: hidden;
 				cursor: pointer;
 				transition: ease 0.3s;
+				border: 8px solid #6b2cff;
+				height: auto;
+      	word-wrap: normal;
 
 				.answer-label {
 					color: v.$light-purple;
 					height: 100%;
-					width: 20%;
+					width: 80px;
 					padding: 10px;
-					font-size: 3.5vw;
-					background-color: rgba(0, 0, 0, 0.742);
+					font-size: 55px;
+					background-color: #3000a0;
 					overflow: hidden;
 					@include m.flex-center;
 				}
@@ -85,7 +116,7 @@
 					width: 80%;
 					height: 100%;
 					padding: 10px;
-					font-size: 1.1vw;
+					font-size: 16px;
 				}
 			}
 			.answer:hover {
@@ -93,11 +124,12 @@
 			}
 
 			.active {
-				border: 5px solid rgb(0, 0, 0);
+				border: 8px solid rgb(249, 128, 0);
+				filter: brightness(120%);
 			}
 
 			.green {
-				border-color: green;
+				border-color: rgb(0, 255, 0);
 			}
 
 			.red {

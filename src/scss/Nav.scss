@@ -13,6 +13,7 @@
 .navbar {
     height: 100px;
     background: rgba(76, 0, 255, 0.103);
+    width: 100%;
 
     .navlink-container {
         width: 100%;
@@ -21,19 +22,6 @@
         justify-content: flex-start;
         align-items: center;
         padding: 0px 20px 0px;
-        
-        .navbar-link {
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: bold;
-            margin: 0px 8px 0px;
-            color: rgb(45, 45, 45);
-            transition: 0.1s ease;
-        }
-
-        .active {
-            border-bottom: 3px solid rgb(45, 45, 45);
-        }
     }
 
     .settings {
