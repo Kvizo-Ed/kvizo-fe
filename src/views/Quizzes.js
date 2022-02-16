@@ -31,7 +31,7 @@ function Quizzes() {
     }, [])
 
     return (
-        <div className="quiz-list">
+        <div className="quizzes">
             {error ? <ErrorMessage message="" /> : <QuizList quizzes={allQuizzes}/>}
         </div>
     )
