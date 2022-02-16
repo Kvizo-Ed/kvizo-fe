@@ -13,9 +13,17 @@ function Quizzes() {
         if (quizzes instanceof Error) {
             setError(true)
         } else {
-            setAllQuizzes(quizzes)
+            setAllQuizzes(filteredQuizzes(quizzes))
             setError(false)
         }
+    }
+
+    function filteredQuizzes(quiz) {
+        return quiz.filter(element => {
+            if(element.attributes.questions.length > 0) {
+                return element
+            }
+        })
     }
 
     useEffect(() => {
@@ -23,7 +31,7 @@ function Quizzes() {
     }, [])
 
     return (
-        <div className="quiz-list">
+        <div className="quizzes">
             {error ? <ErrorMessage message="" /> : <QuizList quizzes={allQuizzes}/>}
         </div>
     )

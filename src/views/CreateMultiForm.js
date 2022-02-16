@@ -4,11 +4,12 @@ import bingo from '../assets/bingo.png';
 import QuizFormHeaderInfo from '../components/QuizFormHeaderInfo'
 import { useEffect, useState, useCallback } from 'react'
 import { postNewQuiz, patchQuizQuestions } from '../services/fetchAPIs'
-import { useNavigate, Routes, Route } from 'react-router-dom'
+import { useNavigate, Routes, Route, useParams } from 'react-router-dom'
 import QuizForm from '../components/QuizForm'
 import BingoForm from '../components/BingoForm'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { getQuizId } from '../services/utils.js'
+import { RiContactsBookLine } from 'react-icons/ri';
 import ErrorMessage from '../components/ErrorMessage'
 
 
@@ -45,6 +46,8 @@ function CreateMultiForm() {
         }
     }
 
+    let quizId = Object.values(useParams())[0].split('/')[1]
+
     const addQuestion = useCallback(async (id) => {
         let status = await patchQuizQuestions({questions: [quizContent.questions[quizContent.questions.length - 1]]}, id)
         if (status instanceof Error) {
@@ -65,34 +68,22 @@ function CreateMultiForm() {
 
     return (
         <div className="create-multi-quiz">
-
             <QuizFormHeaderInfo header={quizHeader} setHeader={setQuizHeader} disabled={headerDisabled}/>
-
             <Routes>
-                <Route path="/*" element=
-                    {
-                        <div>
-                            <button onClick={(e, type) => createNewQuiz(e, "multi")}>
-                                Create! 
-                                <img src={multipleChoice} alt="multiple-choice quiz" />
-                            </button>
-                            <button onClick={(e, type) => createNewQuiz(e, "bingo")}>
-                                Create! 
-                                <img src={bingo} alt="multiple-choice quiz" />
-                            </button>
-                            {error && <ErrorMessage message="" />}
-                        </div>
-                    } />
+                <Route path="/*" element={<button className='create btn' onClick={(e, type) => createNewQuiz(e, "multi")}>Create Quiz!</button>}/>
                 <Route path="/multi/:id" element=
                     {
                         <>
-                            <QuizForm content={quizContent} setContent={setQuizContent} />
+                            <QuizForm quizHeader={quizHeader} content={quizContent} setContent={setQuizContent} />
                             {error && <ErrorMessage message="" />}
                         </>
                     } />
-                <Route path="/bingo" element={<BingoForm />} />
             </Routes>
-            
+            {quizContent.questions.length ? 
+            <Link to={`/quiz/${quizId}`} >
+                <button className='btn'>Finish Creating Quiz</button>
+            </Link>
+            : null}   
         </div>
     );
 }

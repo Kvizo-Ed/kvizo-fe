@@ -1,8 +1,9 @@
 import '../scss/QuizQuestion.scss'
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 
 
-function QuizQuestion({ currentQuiz, changeStatus, status }) {
+function QuizQuestion({ currentQuiz, status, changeStatus }) {
 
 	let { id } = useParams()
 	let parsedId = parseInt(id)
@@ -43,8 +44,9 @@ function QuizQuestion({ currentQuiz, changeStatus, status }) {
 
 	return (
 		<section className="quiz-question-container">
-			<button disabled={parsedId - 1 == 0} onClick={() => {navigate(`/quiz/${currentQuiz.id}/question/${parsedId - 1}`)}}>Prev</button>
+			<button className='prev btn' disabled={parsedId - 1 == 0} onClick={() => {navigate(`/quiz/${currentQuiz.id}/question/${parsedId - 1}`)}}>Prev</button>
 			<div className='quiz-question' key={id}>
+				<h1 className='question-id-header'>Question {id}</h1>
 				<div className='quiz-question-description'>
 					<p>{quizQuestion.questionText}</p>
 				</div>
@@ -52,7 +54,7 @@ function QuizQuestion({ currentQuiz, changeStatus, status }) {
 					{answers}
 				</div>
 			</div>
-			<button disabled={parsedId + 1 > currentQuiz.attributes.questions.length} onClick={() => {navigate(`/quiz/${currentQuiz.id}/question/${parsedId + 1}`)}}>Next</button>
+			<button className='next btn' disabled={parsedId + 1 > currentQuiz.attributes.questions.length} onClick={() => {navigate(`/quiz/${currentQuiz.id}/question/${parsedId + 1}`)}}>Next</button>
 		</section>
 	);
 }

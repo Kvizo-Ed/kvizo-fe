@@ -3,7 +3,6 @@
 
 .create-multi-quiz {
     @include m.view;
-    font-family: v.$content-font;
     display: flex;
     flex-direction: column;;
     align-items: center;

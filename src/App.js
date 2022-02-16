@@ -17,7 +17,6 @@ function App() {
   const [status, changeStatus] = useState({})
 
   function setStatus(quiz) {
-    console.log(quiz)
     quiz.attributes.questions.forEach((question, index) => {
         changeStatus(status => ({...status, [index + 1]: {activeAnswer: null, correctAnswer: question.correctAnswer, answers: question.possibleAnswers}}))
     })
@@ -30,7 +29,7 @@ function App() {
         <Route path="/" element={ <Home /> } />
         <Route path="/create/*" element={ <CreateMultiForm />} />
         <Route path="/quizzes" element={<Quizzes />} />
-        <Route path="/quiz/:id" element={<Quiz setCurrentQuiz={setCurrentQuiz} setStatus={setStatus} />}>
+        <Route path="/quiz/:id" element={<Quiz setCurrentQuiz={setCurrentQuiz} status={status} setStatus={setStatus} />}>
           <Route path="question/:id" element={<QuizQuestion currentQuiz={currentQuiz} setCurrentQuiz={setCurrentQuiz} changeStatus={changeStatus} status={status} setStatus={setStatus} />} />
         </Route>
         <Route path="quiz/:id/score" element={<QuizScore quiz={currentQuiz} status={status} />} >

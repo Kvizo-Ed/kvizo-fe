@@ -1,6 +1,6 @@
 import '../scss/Home.scss';
 import multipleChoice from '../assets/multiple-choice.png';
-import bingo from '../assets/bingo.png';
+import bingo from '../assets/bingouc.png';
 import { Link } from 'react-router-dom'
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
 				<label className='button-title' >Build a <br/>quiz?</label>
 				<div className='img-container'>
 					<Link to='/create' className='icon-link' ><img className='icon' src={multipleChoice} alt='multiple-choice.png' /></Link>
-					<img className='icon' src={bingo} alt='bingo.png' />
+					<img src={bingo} alt='bingo.png' />
 				</div>
 			</div>
 		</section>

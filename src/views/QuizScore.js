@@ -1,4 +1,4 @@
-import '../scss/Quiz.scss';
+import '../scss/QuizScore.scss';
 import { Outlet, Link } from 'react-router-dom'
 
 function QuizScore ({quiz, status}) {
@@ -18,7 +18,7 @@ function QuizScore ({quiz, status}) {
 					<h1>Your score is a {Math.floor((counter / questions) * 100)}%</h1>
 					<h1>That means you got {counter} out {questions} questions correct!</h1>
 					<Link to={`review/1`}>
-            <button>Review Quiz?</button>
+            <button className='btn' >Review Quiz?</button>
           </Link>
 					<Outlet />
         </div>

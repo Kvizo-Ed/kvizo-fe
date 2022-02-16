@@ -30,8 +30,8 @@ function QuizReview({currentQuiz, status}) {
 	})
 
 	return (
-			<section className="quiz-question-container">
-			<button disabled={parsedId - 1 === 0} onClick={() => {navigate(`/quiz/${currentQuiz.id}/score/review/${parsedId - 1}`)}}>Prev</button>
+		<section className="quiz-question-container">
+			<button className='btn' disabled={parsedId - 1 === 0} onClick={() => {navigate(`/quiz/${currentQuiz.id}/score/review/${parsedId - 1}`)}}>Prev</button>
 			<div className='quiz-question' key={id}>
 				<div className='quiz-question-description'>
 					<p>{quizQuestion.questionText}</p>
@@ -40,7 +40,7 @@ function QuizReview({currentQuiz, status}) {
 					{answers}
 				</div>
 			</div>
-			<button disabled={parsedId + 1 > currentQuiz.attributes.questions.length} onClick={() => {navigate(`/quiz/${currentQuiz.id}/score/review/${parsedId + 1}`)}}>Next</button>
+			<button className='btn' disabled={parsedId + 1 > currentQuiz.attributes.questions.length} onClick={() => {navigate(`/quiz/${currentQuiz.id}/score/review/${parsedId + 1}`)}}>Next</button>
 		</section>
 	);
 }

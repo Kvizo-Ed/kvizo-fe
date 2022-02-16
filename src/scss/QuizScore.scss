@@ -1,0 +1,19 @@
+@use 'sass-utils/variables' as v;
+@use 'sass-utils/mixins' as m;
+
+.quiz-score-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	h1 {
+		font-size: 30px;
+		margin: 10px 0px 10px;
+		color: v.$dark-purple;
+	}
+
+	.btn {
+		margin: 10px;
+	}
+}
