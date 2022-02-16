@@ -2,13 +2,20 @@ import '../scss/Quizzes.scss';
 import { useEffect, useState } from 'react'
 import { getQuizzes } from '../services/fetchAPIs'
 import QuizList from '../components/QuizList'
+import ErrorMessage from '../components/ErrorMessage'
 
 function Quizzes() {
     const [allQuizzes, setAllQuizzes] = useState([])
+    const [error, setError] = useState(false)
 
     async function getAllQuizzes() {
         let quizzes = await getQuizzes()
-        setAllQuizzes(filteredQuizzes(quizzes))
+        if (quizzes instanceof Error) {
+            setError(true)
+        } else {
+            setAllQuizzes(filteredQuizzes(quizzes))
+            setError(false)
+        }
     }
 
     function filteredQuizzes(quiz) {
@@ -24,8 +31,8 @@ function Quizzes() {
     }, [])
 
     return (
-        <div className="quizzes">
-            <QuizList quizzes={allQuizzes}/>
+        <div className="quiz-list">
+            {error ? <ErrorMessage message="" /> : <QuizList quizzes={allQuizzes}/>}
         </div>
     )
 }

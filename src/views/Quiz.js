@@ -2,6 +2,7 @@ import '../scss/Quiz.scss';
 import { useState, useEffect } from 'react'
 import { getQuiz } from '../services/fetchAPIs'
 import { useLocation, Outlet, Link, useNavigate, useParams } from 'react-router-dom'
+import ErrorMessage from '../components/ErrorMessage'
 
 function Quiz({ setCurrentQuiz, status, setStatus }) {
     
@@ -10,6 +11,7 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
     const [hideTestInfo, setHideTestInfo] = useState(false)
     const [questionsLength, setQuestionsLength] = useState(0)
     const [showSubmitBtn, setShowSubmitBtn] = useState(false)
+    const [error, setError] = useState(false)
 
     let quizId = parseInt(useLocation().pathname.split('/')[2]);
     let navigate = useNavigate();
@@ -21,12 +23,16 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
 
     async function fetchQuiz() {
         let data = await getQuiz(quizId);
-        await setQuiz(data);
-        await setCurrentQuiz(data)
-        await setStatus(data)
-        setQuestionsLength(data.attributes.questions.length)
-        setLoading(true)
-    }
+        if (data instanceof Error) {
+            setError(true)
+        } else {
+            await setQuiz(data);
+            await setCurrentQuiz(data)
+            await setStatus(data)
+            setQuestionsLength(data.attributes.questions.length)
+            setLoading(true)
+        }
+    } 
 
     useEffect(() => {
         if(questionsLength === questionNumber) {
@@ -65,25 +71,29 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
     })
 
     return (
-        <div className="quiz-container">
-            {loading ?
-                <div>
-                    <h1 className='quiz-view-title'>{quiz.attributes.title}</h1>
-                    <h1 className={hideTestInfo ? 'hidden' : 'quiz-view-info'}>Subject: {quiz.attributes.subject}</h1>
-                    <h1 className={hideTestInfo ? 'hidden' : 'quiz-view-info'}>Topic: {quiz.attributes.topic}</h1>
-                    <div className={hideTestInfo ? 'hidden' : 'quiz-view-btn-container'}>
-                        <Link to={`question/1`} >
-                            <button className={hideTestInfo ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Take Quiz</button>
-                        </Link>
+        <>
+            {error ? <ErrorMessage message="" /> :
+                <div className="quiz-container">
+                {loading ?
+                    <div>
+                        <h1 className='quiz-view-title'>{quiz.attributes.title}</h1>
+                        <h1 className={hideTestInfo ? 'hidden' : 'quiz-view-info'}>Subject: {quiz.attributes.subject}</h1>
+                        <h1 className={hideTestInfo ? 'hidden' : 'quiz-view-info'}>Topic: {quiz.attributes.topic}</h1>
+                        <div className={hideTestInfo ? 'hidden' : 'quiz-view-btn-container'}>
+                            <Link to={`question/1`} >
+                                <button className={hideTestInfo ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Take Quiz</button>
+                            </Link>
+                        </div>
+                        <div className={!hideTestInfo ? 'hidden' : 'question-tracker'} >
+                            {questionTracker}
+                        </div>
                     </div>
-                    <div className={!hideTestInfo ? 'hidden' : 'question-tracker'} >
-                        {questionTracker}
-                    </div>
-                </div>
-            : null}
-            <Outlet />
-            <button className={!showSubmitBtn ? 'hidden' : 'submit btn'} onClick={submitQuiz}>Submit Quiz</button>
-        </div>
+                : null}
+                <Outlet />
+                <button className={!showSubmitBtn ? 'hidden' : 'submit btn'} onClick={submitQuiz}>Submit Quiz</button>
+            </div>
+            }
+        </>
     );
 }
 

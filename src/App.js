@@ -9,6 +9,7 @@ import QuizQuestion from './components/QuizQuestion'
 import QuizScore from './views/QuizScore'
 import QuizReview from './components/QuizReview'
 import { useState } from 'react'
+import ErrorMessage from './components/ErrorMessage'
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="quiz/:id/score" element={<QuizScore quiz={currentQuiz} status={status} />} >
           <Route path="review/:id" element={<QuizReview currentQuiz={currentQuiz} status={status} />}/>
         </Route>
+        <Route path="/*" element={<ErrorMessage message="Page not found" />} />
       </Routes>
     </div>
   );
