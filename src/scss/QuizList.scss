@@ -10,6 +10,17 @@
 		color: v.$dark-purple;
 	}
 
+	.clear {
+		background-image: none;
+		background-color: v.$medium-purple;
+		width: 20%;
+		transition: ease 0.3s;
+
+		&:hover{
+			background-color: v.$dark-purple;
+		}
+	}
+
 	.quiz-list-wrapper {
 		display: flex;
 		justify-content: center;

@@ -85,7 +85,11 @@ function QuizList(quizzes) {
 		<div className="quiz-list">
             {loading ? <p>Loading...</p> :
             <div className='quiz-list-wrapper' >
-                <h1>Select by Topic</h1>
+                {filteredTopics.length ? 
+                <div className='clear-wrapper'>
+                    <button className='clear btn' onClick={(e) => setFilteredTopics([])}>Clear Topics Filter</button>
+                </div>
+                : <h1>Select by Topic</h1>}
                 <div className='button-container'>
                     {subjectButtons}
                 </div>
