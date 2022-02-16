@@ -3,8 +3,10 @@
 
 .quiz-title {
     display: flex;
-    justify-content: baseline;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    width: 100%;
     background-color: v.$light-purple;
     box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
 	border-radius: 20px;
@@ -26,6 +28,10 @@
 
 .quiz-link {
     transition: 0.3s ease;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    width: 250px;
 }
 
 .quiz-link:hover {
