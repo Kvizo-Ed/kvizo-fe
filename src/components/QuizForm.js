@@ -4,6 +4,7 @@ import { FaInfoCircle } from 'react-icons/fa'
 import { RiCloseCircleFill } from 'react-icons/ri'
 import QuizPreviewQuestion from './QuizPreviewQuestion'
 import Modal from 'react-modal'
+import ErrorMessage from './ErrorMessage'
 
 Modal.setAppElement(document.getElementById('root'))
 

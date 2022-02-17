@@ -1,5 +1,3 @@
-
-
 describe('Home View', () => {
 
     beforeEach(() => {
@@ -19,6 +17,12 @@ describe('Home View', () => {
   
     it('As a user, if I visit a url that does not exist, I should see a page not found message.', () => {
       cy.visit('localhost:3000/cheese')
+      cy.get('.error-view').contains("Hmm")
+      cy.visit('localhost:3000/quiz/60/cheese')
+      cy.get('.error-view').contains("Hmm")
+      cy.visit('localhost:3000/quizzes/cheese')
+      cy.get('.error-view').contains("Hmm")
+      cy.visit('localhost:3000/about/cheese')
       cy.get('.error-view').contains("Hmm")
     })
 

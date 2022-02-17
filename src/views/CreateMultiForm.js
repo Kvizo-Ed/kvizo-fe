@@ -69,6 +69,9 @@ function CreateMultiForm() {
     return (
         <div className="create-multi-quiz">
             <QuizFormHeaderInfo header={quizHeader} setHeader={setQuizHeader} disabled={headerDisabled}/>
+            
+            {error && <ErrorMessage message="" />}
+
             <Routes>
                 <Route path="/*" element={<button className='create btn' onClick={(e, type) => createNewQuiz(e, "multi")}>Create Quiz!</button>}/>
                 <Route path="/multi/:id" element=
