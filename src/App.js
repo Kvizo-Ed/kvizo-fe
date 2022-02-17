@@ -8,7 +8,7 @@ import CreateMultiForm from './views/CreateMultiForm'
 import QuizQuestion from './components/QuizQuestion'
 import QuizScore from './views/QuizScore'
 import QuizReview from './components/QuizReview'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import LiveQuizAdmin from './components/LiveQuizAdmin'
 import LiveQuizQuestion from './components/LiveQuizQuestion'
 import ErrorMessage from './components/ErrorMessage'
@@ -24,6 +24,10 @@ function App() {
     })
   }
 
+  useEffect(() => {
+    changeStatus({})
+  }, [])
+
   return (
     <div className="App">
       <Nav />
@@ -31,7 +35,7 @@ function App() {
         <Route path="/" element={ <Home /> } />
         <Route path="/create/*" element={ <CreateMultiForm />} />
         <Route path="/quizzes" element={<Quizzes />} />
-        <Route path="/quiz/:id" element={<Quiz setCurrentQuiz={setCurrentQuiz} status={status} setStatus={setStatus} />}>
+        <Route path="/quiz/:id" element={<Quiz setCurrentQuiz={setCurrentQuiz} status={status} setStatus={setStatus} changeStatus={changeStatus}/>}>
           <Route path="live/admin" element={<LiveQuizAdmin />} />
           <Route path="live/question" element={<LiveQuizQuestion />} />
           <Route path="question/:id" element={<QuizQuestion currentQuiz={currentQuiz} setCurrentQuiz={setCurrentQuiz} changeStatus={changeStatus} status={status} setStatus={setStatus} />} />

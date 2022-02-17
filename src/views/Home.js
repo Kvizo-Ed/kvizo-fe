@@ -2,13 +2,31 @@ import '../scss/Home.scss';
 import multipleChoice from '../assets/multiple-choice.png';
 import bingo from '../assets/bingouc.png';
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getQuote } from '../services/fetchAPIs'
 
 const Home = () => {
+
+	const [quote, setQuote] = useState('')
+
+	async function fetchQuote() {
+		let quotes = await getQuote()
+		let randomNumber = Math.floor(Math.random() * quotes.length)
+		setQuote(quotes[randomNumber])
+	}
+
+	useEffect(() => {
+		fetchQuote()
+	}, [])
+
 
 	return (
 		<section className='home'>
 			<div className='home-greeting-container'>
-				<p className='home-greeting'>PlaceHolder - The worlds most advanced quiz creator. Utilizing nano technology we are able to inject the knowlege directly into your students brain.</p>
+				{quote.author ? <p className='quote-header' >- {quote.author}</p>
+				: <p className='quote-header' >- Unknown</p>
+				}
+				<p className='home-greeting'>{quote.text}.</p>
 			</div>
 			<div className='build-quiz-container'>
 				<label className='button-title' >Build a <br/>quiz?</label>

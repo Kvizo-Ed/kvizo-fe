@@ -4,7 +4,7 @@ import { getQuiz } from '../services/fetchAPIs'
 import { useLocation, Outlet, Link, useNavigate, useParams } from 'react-router-dom'
 import ErrorMessage from '../components/ErrorMessage'
 
-function Quiz({ setCurrentQuiz, status, setStatus }) {
+function Quiz({ setCurrentQuiz, status, setStatus, changeStatus }) {
     
     const [quiz, setQuiz] = useState({})
     const [loading, setLoading] = useState(false)
@@ -21,6 +21,7 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
 
     useEffect(() => {
         fetchQuiz(quizId)
+        changeStatus({})
     }, [])
 
     async function fetchQuiz() {
@@ -72,6 +73,7 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
     }
 
     let questionTracker = Object.values(status).map((element, index) => {
+        console.log(element)
         return (
             <div key={index + 1} className={changeQuestionDot(index)} onClick={(e) => handleDotClick(index + 1)} >{index + 1}</div>
         )

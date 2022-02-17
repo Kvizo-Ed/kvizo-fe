@@ -80,6 +80,20 @@ export const getQuiz = (id) => {
   })
 }
 
+export const getQuote = () => {
+  return fetch("https://type.fit/api/quotes")
+    .then(response => {
+      if (response) {
+        return response.json()
+      } else {
+        throw new Error(response.status)
+      }
+    })
+    .catch((error) => {
+      return error
+    })
+}
+
 export const postLiveQuestion = (question) => {
   return fetch(`${API_ROOT}/api/v1/questions`, {
       method: 'POST',
