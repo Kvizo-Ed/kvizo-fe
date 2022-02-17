@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom'
 
 function QuizQuestion() {
 
-    let [question, setQuestion] = useState('')
+    let [question, setQuestion] = useState({data: null})
 
-    const randomizeAnswers = (question) => {
-        const answers = shuffle(question.possibleAnswers)
+    const randomizeAnswers = (answers) => {
+        // const answers = shuffle(question.possibleAnswers)
         return answers.map((element, index) => {
             return (
                 <div className='answer' key={index}>
@@ -20,26 +20,28 @@ function QuizQuestion() {
         })
     }
     
-    let randomizedAnswers = question.length ? randomizeAnswers(question) : randomizeAnswers({possibleAnswers: ['', '', '', '']})
+    // let randomizedAnswers = question.data ? randomizeAnswers(question.data.attributes.possible_answers) : randomizeAnswers({possibleAnswers: ['', '', '', '']})
 
     const handleReceived = (res) => {
         console.log(res)
+        setQuestion(res)
         // See what this looks like
         // Set question to state, setQuestion(entire question, not just text)
     }
 
 	return (
 		<section className="quiz-question-container">
+            {console.log("QUESTION", question.question)}
 			<div className='quiz-question'>
 				<div className='quiz-question-description'>
                     <ActionCable
                         channel={{ channel: 'QuestionsChannel' }}
                         onReceived={handleReceived}
                     />
-					<p>{question.length ? question.questionText : 'Hang tight, the question is on its way!'}</p>
+					<p>{question.question ? question.question.data.attributes.question_text : 'Hang tight, the question is on its way!'}</p>
 				</div>
 				<div className='answers-container'>
-					{randomizedAnswers}
+					{question.question ? randomizeAnswers(question.question.data.attributes.possible_answers) : randomizeAnswers(['', '', '', ''])}
 				</div>
 			</div>
 		</section>
