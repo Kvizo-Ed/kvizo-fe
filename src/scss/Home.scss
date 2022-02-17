@@ -7,6 +7,7 @@
 	align-items: center;
 	margin-top: 50px;
 	height: 80%;
+	width: 100%;
 
 	.home-greeting-container {
 		width: 70%;
@@ -28,23 +29,20 @@
 			background-color: v.$dark-purple;
 			display: flex;
 			flex-direction: row;
-			align-items: center;
 			justify-content: center;
 			border-radius: 80px;
 			overflow: hidden;
-			width: 70%;
 
 			.button-title {
 				@include m.flex-center;
-				height: 100%;
 				width: 25%;
 				color: white;
 				background-color: v.$darker-purple;
 				font-family: Frank Ruhl Libre;
 				font-style: normal;
 				font-weight: bold;
-				font-size: 4vw;
-				line-height: 90px;
+				font-size: 50px;
+				line-height: 60px;
 				white-space: pre;
 				padding: 40px;
 			}

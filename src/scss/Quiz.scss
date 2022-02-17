@@ -4,12 +4,76 @@
 .quiz-container {
 	@include m.flex-center;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	// font-family: 'Fredoka One', cursive;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	color: v.$dark-purple;
+
+	.take-quiz {
+		text-decoration: none;
+		user-select: none;
+	}
+
+	.submit {
+		background-image: none;
+		background-color: rgb(0, 150, 0);
+	}
 
 	.quiz-view-title {
 		font-size: 50px;
+		margin: 20px 0px 10px
 	}
 
 	.quiz-view-info {
-		font-size: 20px;
+		font-size: 30px;
+		margin: 10px 0px 10px
 	}
+
+	.question-tracker {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		border-radius: 20px;
+		height: 50px;
+		width: 100%;
+		background-color: v.$light-purple;
+		margin: 10px;
+
+		.question-dot {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: v.$dark-purple;
+			border: 5px solid rgba(255, 255, 255, 0);
+			height: 40px;
+			width: 40px;
+			border-radius: 20px;
+			cursor: pointer;
+			transition: 0.1s ease;
+		}
+
+		.question-dot:hover {
+			transform: scale(1.2);
+		}
+
+		.current {
+			border: 5px solid v.$dark-purple;
+		}
+
+		.active {
+			background-color: v.$medium-purple;
+		}
+	}
+
+	.quiz-question-container {
+		@include m.flex-center;
+	}
+
+	.hidden {
+		display: none;
+	}
+
 }

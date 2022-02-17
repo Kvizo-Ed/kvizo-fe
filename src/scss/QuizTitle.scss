@@ -2,20 +2,32 @@
 @use 'sass-utils/mixins' as m;
 
 .quiz-title {
-    margin: 10px;
     display: flex;
     justify-content: baseline;
+    flex-direction: column;
+    background-color: v.$light-purple;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+	border-radius: 20px;
+    overflow: hidden;
 }
 
-.title, .details {
+.details {
+    padding: 10px;
     color: v.$dark-purple;
-    padding: 1%;
 }
 
 .title {
-    background-color: v.$secondary-orange;
+	background-image: radial-gradient(100% 100% at 100% 0, v.$dark-purple 0, #5b15ff 100%);
     color: white;
-    border-radius: 15px;
-    margin-right: 10px;
-    font-weight: 600;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+}
+
+.quiz-link {
+    transition: 0.3s ease;
+}
+
+.quiz-link:hover {
+    transform: translateY(-7px) scale(1.03);
 }
