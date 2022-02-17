@@ -30,8 +30,6 @@ function LiveQuizAdmin() {
 
     const handleClick = (e, question) => {
         e.preventDefault()
-        console.log("Question", question)
-        console.log("SENDING: ", {questionID: question.questionId})
 
         postLiveQuestion({questionID: question.questionId})
     }

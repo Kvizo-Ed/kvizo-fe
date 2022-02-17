@@ -1,15 +1,14 @@
 import '../scss/QuizQuestion.scss'
 import { useState } from 'react'
 import { shuffle } from '../services/utils.js'
-import { ActionCable } from 'react-actioncable-provider'
-import { Link } from 'react-router-dom'
+import { ActionCableConsumer } from 'react-actioncable-provider'
 
 function QuizQuestion() {
 
-    let [question, setQuestion] = useState({data: null})
+    const [question, setQuestion] = useState(null)
 
-    const randomizeAnswers = (answers) => {
-        // const answers = shuffle(question.possibleAnswers)
+    const randomizeAnswers = (possibleAnswers) => {
+        const answers = shuffle(possibleAnswers)
         return answers.map((element, index) => {
             return (
                 <div className='answer' key={index}>
@@ -20,31 +19,27 @@ function QuizQuestion() {
         })
     }
     
-    // let randomizedAnswers = question.data ? randomizeAnswers(question.data.attributes.possible_answers) : randomizeAnswers({possibleAnswers: ['', '', '', '']})
-
-    const handleReceived = (res) => {
-        console.log(res)
-        setQuestion(res)
-        // See what this looks like
-        // Set question to state, setQuestion(entire question, not just text)
+    async function handleReceived(res) {
+        console.log(">>>> Received", res.question.data.attributes)
+        await setQuestion(res.question.data.attributes)
     }
 
 	return (
-		<section className="quiz-question-container">
-            {console.log("QUESTION", question.question)}
-			<div className='quiz-question'>
-				<div className='quiz-question-description'>
-                    <ActionCable
-                        channel={{ channel: 'QuestionsChannel' }}
-                        onReceived={handleReceived}
-                    />
-					<p>{question.question ? question.question.data.attributes.question_text : 'Hang tight, the question is on its way!'}</p>
-				</div>
-				<div className='answers-container'>
-					{question.question ? randomizeAnswers(question.question.data.attributes.possible_answers) : randomizeAnswers(['', '', '', ''])}
-				</div>
-			</div>
-		</section>
+        <ActionCableConsumer
+            channel={{ channel: 'QuestionsChannel' }}
+            onReceived={handleReceived}
+        >
+            <section className="quiz-question-container">
+                <div className='quiz-question'>
+                    <div className='quiz-question-description'>
+                        <p>{question ? question.question_text : 'Hang tight, the question is on its way!'}</p>
+                    </div>
+                    <div className='answers-container'>
+                        {question ? randomizeAnswers(question.possible_answers) : randomizeAnswers(['', '', '', ''])}
+                    </div>
+                </div>
+            </section>
+        </ActionCableConsumer>
 	);
 }
 
