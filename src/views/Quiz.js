@@ -12,10 +12,12 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
     const [questionsLength, setQuestionsLength] = useState(0)
     const [showSubmitBtn, setShowSubmitBtn] = useState(false)
     const [error, setError] = useState(false)
+    const [live, setLive] = useState(false)
 
     let quizId = parseInt(useLocation().pathname.split('/')[2]);
     let navigate = useNavigate();
     let questionNumber = parseInt(useParams().id);
+    let url = useLocation().pathname
 
     useEffect(() => {
         fetchQuiz(quizId)
@@ -38,6 +40,11 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
         if(questionsLength === questionNumber) {
             setShowSubmitBtn(true)
         }
+
+        if (url.split('/').includes("live")) {
+            setLive(true)
+        }
+
     })
     
     function submitQuiz() {
@@ -77,20 +84,20 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
                 {loading ?
                     <div>
                         <h1 className='quiz-view-title'>{quiz.attributes.title}</h1>
-                        <h1 className={hideTestInfo ? 'hidden' : 'quiz-view-info'}>Subject: {quiz.attributes.subject}</h1>
-                        <h1 className={hideTestInfo ? 'hidden' : 'quiz-view-info'}>Topic: {quiz.attributes.topic}</h1>
-                        <div className={hideTestInfo ? 'hidden' : 'quiz-view-btn-container'}>
+                        <h1 className={(hideTestInfo || live)  ? 'hidden' : 'quiz-view-info'}>Subject: {quiz.attributes.subject}</h1>
+                        <h1 className={(hideTestInfo || live)  ? 'hidden' : 'quiz-view-info'}>Topic: {quiz.attributes.topic}</h1>
+                        <div className={(hideTestInfo || live)  ? 'hidden' : 'quiz-view-btn-container'}>
                             <Link to={`question/1`} >
-                                <button className={hideTestInfo ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Take Quiz</button>
+                                <button className={(hideTestInfo || live)  ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Take Quiz</button>
                             </Link>
                             <Link to={`live/question/`} >
-                                <button className={hideTestInfo ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Take Live Quiz</button>
+                                <button className={(hideTestInfo || live)  ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Take Live Quiz</button>
                             </Link>
                             <Link to={`live/admin`} >
-                                <button className={hideTestInfo ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Administer Live Quiz</button>
+                                <button className={(hideTestInfo || live) ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Administer Live Quiz</button>
                             </Link>
                         </div>
-                        <div className={!hideTestInfo ? 'hidden' : 'question-tracker'} >
+                        <div className={(!hideTestInfo || live) ? 'hidden' : 'question-tracker'}  >
                             {questionTracker}
                         </div>
                     </div>
