@@ -71,27 +71,6 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
     })
 
     return (
-<<<<<<< HEAD
-        <div className="quiz-container">
-            {loading ?
-                <div>
-                    <h1 className='quiz-view-title'>{quiz.attributes.title}</h1>
-                    <h1 className='quiz-view-info'>Topic: {quiz.attributes.topic}</h1>
-                    <h1 className='quiz-view-title'>Subject: {quiz.attributes.subject}</h1>
-                    <Link to={`question/1`}>
-                        <button>Take Quiz</button>
-                    </Link>
-                    <Link to={`live/question/`}>
-                        <button>Take Live Quiz</button>
-                    </Link>
-                    <Link to={'live/admin'}>
-                        <button>Administer Live Quiz</button>
-                    </Link>
-                    <Outlet />
-                </div>
-            : <h1>hello</h1>}
-        </div>
-=======
         <>
             {error ? <ErrorMessage message="" /> :
                 <div className="quiz-container">
@@ -104,6 +83,12 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
                             <Link to={`question/1`} >
                                 <button className={hideTestInfo ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Take Quiz</button>
                             </Link>
+                            <Link to={`live/question/`} >
+                                <button className={hideTestInfo ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Take Live Quiz</button>
+                            </Link>
+                            <Link to={`live/admin`} >
+                                <button className={hideTestInfo ? 'hidden' : 'take-quiz btn'} onClick={(e) => setHideTestInfo(true)} >Administer Live Quiz</button>
+                            </Link>
                         </div>
                         <div className={!hideTestInfo ? 'hidden' : 'question-tracker'} >
                             {questionTracker}
@@ -115,7 +100,6 @@ function Quiz({ setCurrentQuiz, status, setStatus }) {
             </div>
             }
         </>
->>>>>>> main
     );
 }
 
