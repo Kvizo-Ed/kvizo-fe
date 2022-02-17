@@ -1,19 +1,42 @@
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import '../scss/LiveQuizAdmin.scss';
 import { postLiveQuestion } from '../services/fetchAPIs.js'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { getQuiz } from '../services/fetchAPIs'
+import ErrorMessage from './ErrorMessage.js'
 
-function LiveQuizAdmin({ quiz }) {
+function LiveQuizAdmin() {
 
-    console.log('quizzy quiz', quiz.attributes.questions)
+    const [quiz, setQuiz] = useState({})
+    const [questions, setQuestions] = useState([])
+    const [error, setError] = useState(false)
+
+    let quizId = parseInt(useLocation().pathname.split('/')[2]);
+
+    async function fetchQuiz() {
+        let data = await getQuiz(quizId);
+        if (data instanceof Error) {
+            setError(true)
+        } else {
+            await setQuiz(data)
+            await setQuestions(data.attributes.questions)
+        }
+    } 
+    
+    useEffect(() => {
+        fetchQuiz(quizId)
+    }, [])
 
     const handleClick = (e, question) => {
         e.preventDefault()
-        console.log(question)
+        console.log("Question", question)
+        console.log("SENDING: ", {questionID: question.questionId})
 
-        postLiveQuestion({questionID: 1})
+        postLiveQuestion({questionID: question.questionId})
     }
 
-    const questions = quiz.attributes.questions.map((question, i) => {
+    const questionButtons = questions.map((question, i) => {
         return (
             <div key={i}>
                 <button onClick={(e) => handleClick(e, question)} >{question.questionText}</button>
@@ -31,14 +54,15 @@ function LiveQuizAdmin({ quiz }) {
 
     return (
         <ActionCableConsumer 
-            channel="ConversationsChannel"
+            channel="ErrorMessagesChannel"
             onConnected={() => console.log("connected")}
             onDisconnected={() => console.log("DISconnected")}
             onRejected={() => console.log("rejected")}
             onReceived={handleReceived}
         >
             <form className="admin">
-                {questions}
+                {error && <ErrorMessage message="" />}
+                {questions.length ? questionButtons : <p>Loading...</p>}
             </form>
         </ActionCableConsumer>
     );

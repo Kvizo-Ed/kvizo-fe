@@ -31,9 +31,9 @@ function App() {
         <Route path="/" element={ <Home /> } />
         <Route path="/create/*" element={ <CreateMultiForm />} />
         <Route path="/quizzes" element={<Quizzes />} />
-          <Route path="live/admin" element={<LiveQuizAdmin quiz={currentQuiz} />} />
-          <Route path="live/question" element={<LiveQuizQuestion quiz={currentQuiz} />} />
         <Route path="/quiz/:id" element={<Quiz setCurrentQuiz={setCurrentQuiz} status={status} setStatus={setStatus} />}>
+          <Route path="live/admin" element={<LiveQuizAdmin />} />
+          <Route path="live/question" element={<LiveQuizQuestion />} />
           <Route path="question/:id" element={<QuizQuestion currentQuiz={currentQuiz} setCurrentQuiz={setCurrentQuiz} changeStatus={changeStatus} status={status} setStatus={setStatus} />} />
         </Route>
         <Route path="quiz/:id/score" element={<QuizScore quiz={currentQuiz} status={status} />} >

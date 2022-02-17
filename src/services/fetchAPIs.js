@@ -1,4 +1,4 @@
-import { API_WS_ROOT, API_ROOT, HEADERS } from '../constants/index.js'
+import { API_ROOT, HEADERS } from '../constants/index.js'
 
 export const postNewQuiz = (quizHeaders) => {
     return fetch("https://kvizo-be.herokuapp.com//api/v1/quizzes", {

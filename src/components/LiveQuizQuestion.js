@@ -4,7 +4,7 @@ import { shuffle } from '../services/utils.js'
 import { ActionCable } from 'react-actioncable-provider'
 import { Link } from 'react-router-dom'
 
-function QuizQuestion({ quiz }) {
+function QuizQuestion() {
 
     let [question, setQuestion] = useState('')
 

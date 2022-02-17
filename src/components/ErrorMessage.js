@@ -1,6 +1,6 @@
 import '../scss/ErrorMessage.scss';
 
-function Error({ message }) {
+function ErrorMessage({ message }) {
 	console.log("MESSAGE", message)
 	let messageText = message.length ? 
 		"Hmm, there doesn't seem to be anything here. Try clicking on one of the links above!" : 
@@ -13,4 +13,4 @@ function Error({ message }) {
 	);
 }
 
-export default Error;
+export default ErrorMessage;
