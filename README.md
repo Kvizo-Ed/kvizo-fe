@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Kvizo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Deployed Link](https://kvizofe.herokuapp.com/)
+## [Back-End Repo](https://github.com/Kvizo-Ed/kvizo-be)
 
-## Available Scripts
+#### Front-End Team
+- [Anna Kummer](https://github.com/annamkummer)
+- [Edward Krupicka](https://github.com/edwardkrupicka)
 
-In the project directory, you can run:
+#### Back-End Team
+- [Nate Brown](https://github.com/yosoynatebrown)
+- [Leslie Sanders](https://github.com/lgsriclas)
 
-### `npm start`
+#### Project Managers 
+- [Brian Zanti](https://github.com/brianzanti)
+- [Dan Levy](https://github.com/justsml/) 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Abstract
+Our Turing Capstone project, Kvizo.
+This goal of this project was to create a UI/kid friendly application where teachers can create custom multiple choice quizzes and their students can take the quiz. In this app, the teacher can input a question, four multiple choice answers and save this quiz to our Kvizo API. The quizzes are posted to our API when saved and are displayed on the application for the student to find and take the quiz.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Goals
+The goals of this project were to:
+- Practice Agile methodology
+- Collaborate and work side by side with a Back-End team
+- Create an app that is UI friendly to the quiz creators and young quiz takers
+- Write modular, reusable code that adheres to SRP (Single Responsibility Principle) and DRY (Don't Repeat Yourself).
+- Implement a robust testing suite using TDD.
+- Make network requests to retrieve and post data from a REST API.
 
-### `npm test`
+### Home View
+<img width="650" alt="Screen Shot 2022-02-17 at 11 05 06 AM" src="https://user-images.githubusercontent.com/87044013/154543363-6f41d503-2de5-4cc5-b4ad-b180cf435218.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Create Quiz Views
+<img width="650" alt="Screen Shot 2022-02-17 at 11 06 39 AM" src="https://user-images.githubusercontent.com/87044013/154543605-f09cfa2b-6a3c-4218-a81b-7a7b67113083.png"><img width="650" alt="Screen Shot 2022-02-17 at 11 16 45 AM" src="https://user-images.githubusercontent.com/87044013/154545102-9eb366b0-a8b4-43d0-b668-e3c82bf09e5f.png">
 
-### `npm run build`
+### Student View
+<img width="650" alt="Screen Shot 2022-02-17 at 11 13 39 AM" src="https://user-images.githubusercontent.com/87044013/154544702-3026e8b5-24c7-4929-b218-87caf4e00471.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Challenges
+ - Working with Back-End for the first time and figuring out what we needed from eachother
+ - Nesting routes so each quiz and question had it's own unique path
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Wins!
+ - The design of the website
+ - The team coming together and working smoothly with GitHub projectboards and issues
+ - Using React Hooks and functional components for state
+ - Collaborating with Back-End and being able to learn new technologies with them
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Technologies Used:
+- Javascript & React
+- HTML, CSS and SASS
+- Node.js & NPM
+- REST API
+- Webpack
 
-### `npm run eject`
+### Future Goals
+- User can add custom number of answers for multiple choice questions
+- Optimize code for faster load times and performance
+- Check some elements of accessibility, including testing with a screenreader
+- Add login and authentication
+- Add new quizzes like Bingo and Jeopardy
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Rubric:  
+- [Capstone](https://mod4.turing.edu/projects/capstone/index.html)  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
