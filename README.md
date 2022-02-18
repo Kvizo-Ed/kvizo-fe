@@ -1,7 +1,5 @@
 # Kvizo
-
-## [Deployed Link](https://kvizofe.herokuapp.com/)
-## [Back-End Repo](https://github.com/Kvizo-Ed/kvizo-be)
+## [Deployed Link](https://kvizofe.herokuapp.com/) - [Back-End Repo](https://github.com/Kvizo-Ed/kvizo-be)
 
 #### Front-End Team
 - [Anna Kummer](https://github.com/annamkummer)
